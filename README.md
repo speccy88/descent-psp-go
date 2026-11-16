@@ -1,8 +1,9 @@
 # Descent PSP Go
 
-Native Descent 1 PSP Go development candidate, based on pinned D1X-Rebirth 0.58.1. The package contains PC shareware 1.4 (seven levels), not the registered campaign. Build and emulator validation are documented in docs; physical gameplay remains unverified.
+Native Descent 1 PSP Go development candidate, based on pinned D1X-Rebirth 0.58.1. Local setup supplies PC shareware 1.4 (seven levels), not the registered campaign. The user confirmed successful physical gameplay with rc.3, followed by a sound-conversion out-of-memory exit. The rc.4 correction removes that growing conversion cache; extended physical validation remains pending.
 
 The startup/alignment recovery candidate and its current hardware evidence are documented in [docs/startup-investigation.md](docs/startup-investigation.md).
+The gameplay sound-memory correction is documented in [docs/sound-memory.md](docs/sound-memory.md).
 
 ## Install a release
 
@@ -20,6 +21,7 @@ bash scripts/build-desktop.sh
 bash scripts/test-host.sh
 bash scripts/test-alignment.sh
 bash scripts/test-pilot-settings.sh
+bash scripts/test-sound-mixer.sh assets/shareware/descent.pig
 export PSPDEV=/absolute/path/to/pspdev
 bash scripts/build-psp.sh build/diagnostic ON
 bash scripts/build-psp.sh build/psp OFF

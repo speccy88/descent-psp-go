@@ -152,4 +152,7 @@ The exact rc.3 EBOOT was also tested in PPSSPP with the copied hardware pilot: i
 loads the existing pilot, enters level one with music and exits cleanly through
 the menu. The public ZIP setup verifies 16 files after adding the shareware data.
 Relinking the debug archive reproduces the release PRX byte-for-byte.
-Physical validation of rc.3 is still required.
+The subsequent physical rc.3 test successfully entered gameplay. The user
+reported playing and advancing through the level before a controlled exit with
+`Out of memory converting sound`. No power cycle was needed. That separate
+failure and the rc.4 correction are recorded in [sound-memory.md](sound-memory.md).

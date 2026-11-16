@@ -121,7 +121,7 @@ void digi_end_sound(int channel) { fptr_end_sound(channel); }
 
 int  digi_is_sound_playing(int soundno) { return fptr_is_sound_playing(soundno); }
 int  digi_is_channel_playing(int channel) { return fptr_is_channel_playing(channel); }
-void digi_stop_all_channels() { fptr_stop_all_channels(); }
+void digi_stop_all_channels() { if (fptr_stop_all_channels) fptr_stop_all_channels(); }
 void digi_set_digi_volume(int dvolume) { fptr_set_digi_volume(dvolume); }
 
 #ifndef NDEBUG

@@ -1,220 +1,290 @@
 /*
- * This is an alternate backend for the sound effect system.
- * It uses SDL_mixer to provide a more reliable playback,
- * and allow processing of multiple audio formats.
+ * SDL_mixer output with bounded, direct mixing of Descent's U8 mono effects.
+ * Adapted from the D1X SDL backends (MD2211's 2006 SDL_mixer backend and
+ * digi_audio.c). Music still uses SDL_mixer's independent music hook.
  *
- * This file is based on the original D1X arch/sdl/digi.c
- *
- *  -- MD2211 (2006-10-12)
+ * Never expand/cache whole effects: the shareware set would require 13 MB at
+ * 44.1 kHz S16 stereo. Slots borrow the engine's resident original samples.
+ * Playback and the callback allocate nothing. Stop slots before freeing assets.
  */
-
-#include <stdlib.h>
+#include <stdint.h>
 #include <stdio.h>
 #include <string.h>
-
 #include <SDL/SDL.h>
-#include <SDL/SDL_audio.h>
 #if !(defined(__APPLE__) && defined(__MACH__))
 #include <SDL/SDL_mixer.h>
 #else
 #include <SDL_mixer/SDL_mixer.h>
 #endif
-
 #include "pstypes.h"
 #include "dxxerror.h"
-#include "sounds.h"
 #include "digi.h"
+#include "sounds.h"
 #include "digi_mixer.h"
-#include "digi_mixer_music.h"
 #include "console.h"
 #include "config.h"
 #include "args.h"
 
-#include "fix.h"
-#include "gr.h" // needed for piggy.h
-#include "piggy.h"
-
-#define MIX_DIGI_DEBUG 0
-#define MIX_OUTPUT_FORMAT	AUDIO_S16
-#define MIX_OUTPUT_CHANNELS	2
-
 #define MAX_SOUND_SLOTS 64
-#if !((defined(__APPLE__) && defined(__MACH__)) || defined(macintosh))
 #define SOUND_BUFFER_SIZE 1024
-#else
-#define SOUND_BUFFER_SIZE 1024
-#endif
-#define MIN_VOLUME 10
+#define MIX_BLOCK_FRAMES 256
 
-static int digi_initialised = 0;
-static int digi_max_channels = MAX_SOUND_SLOTS;
-static inline int fix2byte(fix f) { return (f / 256) % 256; }
-Mix_Chunk SoundChunks[MAX_SOUNDS];
-ubyte channels[MAX_SOUND_SLOTS];
+struct effect_slot {
+    const Uint8 *data;
+    unsigned length, position, phase, rate, loop_start, loop_end;
+    int playing, looping, soundno, soundobj;
+    int volume, pan, left_gain, right_gain;
+};
+static struct effect_slot slots[MAX_SOUND_SLOTS];
+static Sint32 accumulation[MIX_BLOCK_FRAMES * 2];
+static int digi_initialised, digi_max_channels = MAX_SOUND_SLOTS;
+static unsigned starts, full_channels, peak_channels;
 
-/* Initialise audio */
-int digi_mixer_init()
+extern int SoundQ_channel;
+extern void SoundQ_end(void);
+extern void digi_end_soundobj(int soundobj);
+extern int digi_xlat_sound(int soundno);
+
+static int clamp(int value, int low, int high)
 {
-	digi_sample_rate = SAMPLE_RATE_44K;
-
-	if (MIX_DIGI_DEBUG) con_printf(CON_DEBUG,"digi_init %d (SDL_Mixer)\n", MAX_SOUNDS);
-	if (SDL_InitSubSystem(SDL_INIT_AUDIO) < 0) Error("SDL audio initialisation failed: %s.", SDL_GetError());
-
-	if (Mix_OpenAudio(digi_sample_rate, MIX_OUTPUT_FORMAT, MIX_OUTPUT_CHANNELS, SOUND_BUFFER_SIZE))
-	{
-		//edited on 10/05/98 by Matt Mueller - should keep running, just with no sound.
-		con_printf(CON_URGENT,"\nError: Couldn't open audio: %s\n", SDL_GetError());
-		GameArg.SndNoSound = 1;
-		return 1;
-	}
-
-	digi_max_channels = Mix_AllocateChannels(digi_max_channels);
-	memset(channels, 0, MAX_SOUND_SLOTS);
-	Mix_Pause(0);
-
-	digi_initialised = 1;
-
-	digi_mixer_set_digi_volume( (GameCfg.DigiVolume*32768)/8 );
-
-	return 0;
+    return value < low ? low : value > high ? high : value;
 }
 
-/* Shut down audio */
-void digi_mixer_close() {
-	if (MIX_DIGI_DEBUG) con_printf(CON_DEBUG,"digi_close (SDL_Mixer)\n");
-	if (!digi_initialised) return;
-	digi_initialised = 0;
-	Mix_CloseAudio();
+/* Preserve the previous mixer's master/distance attenuation and linear pan,
+ * without per-channel SDL effects (which themselves allocate scratch copies).
+ * All gain calculations happen on the game thread, under the audio lock. */
+static void update_gains(struct effect_slot *slot)
+{
+    int master = clamp(digi_volume, 0, 32768);
+    int attenuation = slot->volume > F1_0 ? F1_0 :
+        (int)((int64_t)master * clamp(slot->volume, 0, F1_0) / F1_0);
+    int gain = (int)((int64_t)(master * 2) * attenuation / F1_0);
+    int pan = clamp(slot->pan, 0, F1_0);
+    slot->left_gain = (int)((int64_t)gain * (F1_0 - pan) / F1_0);
+    slot->right_gain = (int)((int64_t)gain * pan / F1_0);
 }
 
-/* channel management */
-int digi_mixer_find_channel()
+/* SDL already holds the audio lock here. No I/O, allocation, engine callbacks,
+ * or nested locking is allowed. A small fixed buffer sums music plus effects
+ * in 32 bits, then clips once to S16. Integer-rate repetition preserves the
+ * original 11025 Hz samples at the 44100 Hz output rate. */
+static void SDLCALL mix_effects(void *unused, Uint8 *stream, int bytes)
 {
-	int i;
-	for (i = 0; i < digi_max_channels; i++)
-		if (channels[i] == 0)
-			return i;
-	return -1;
+    Sint16 *output = (Sint16 *)stream;
+    int remaining = bytes / (int)(2 * sizeof(*output));
+    (void)unused;
+    while (remaining > 0) {
+        int frames = remaining > MIX_BLOCK_FRAMES ? MIX_BLOCK_FRAMES : remaining;
+        int i, c;
+        for (i = 0; i < frames * 2; ++i)
+            accumulation[i] = output[i];
+        for (c = 0; c < digi_max_channels; ++c) {
+            struct effect_slot *slot = &slots[c];
+            if (!slot->playing) continue;
+            for (i = 0; i < frames && slot->playing; ++i) {
+                int sample = (int)slot->data[slot->position] - 128;
+                accumulation[i * 2] += sample * slot->left_gain / 256;
+                accumulation[i * 2 + 1] += sample * slot->right_gain / 256;
+                slot->phase += slot->rate;
+                while (slot->phase >= (unsigned)digi_sample_rate) {
+                    slot->phase -= digi_sample_rate;
+                    ++slot->position;
+                    if (slot->looping && slot->position >= slot->loop_end)
+                        slot->position = slot->loop_start;
+                    else if (slot->position >= slot->length) {
+                        slot->playing = 0;
+                        break;
+                    }
+                }
+            }
+        }
+        for (i = 0; i < frames * 2; ++i)
+            output[i] = (Sint16)clamp(accumulation[i], -32768, 32767);
+        output += frames * 2;
+        remaining -= frames;
+    }
 }
 
-void digi_mixer_free_channel(int channel_num)
+int digi_mixer_init(void)
 {
-	channels[channel_num] = 0;
+    int rate, channels;
+    Uint16 format;
+    if (digi_initialised) return 0;
+    digi_sample_rate = SAMPLE_RATE_44K;
+    if (SDL_InitSubSystem(SDL_INIT_AUDIO) < 0)
+        Error("SDL audio initialisation failed: %s.", SDL_GetError());
+    if (Mix_OpenAudio(digi_sample_rate, AUDIO_S16SYS, 2, SOUND_BUFFER_SIZE)) {
+        con_printf(CON_URGENT, "Couldn't open audio: %s\n", SDL_GetError());
+        GameArg.SndNoSound = 1;
+        return 1;
+    }
+    if (!Mix_QuerySpec(&rate, &format, &channels) ||
+        rate != digi_sample_rate || format != AUDIO_S16SYS || channels != 2) {
+        con_printf(CON_URGENT, "Unsupported sound output format\n");
+        Mix_CloseAudio();
+        GameArg.SndNoSound = 1;
+        return 1;
+    }
+    memset(slots, 0, sizeof(slots));
+    for (int i = 0; i < MAX_SOUND_SLOTS; ++i) slots[i].soundobj = -1;
+    starts = full_channels = peak_channels = 0;
+    digi_initialised = 1;
+    digi_mixer_set_digi_volume((GameCfg.DigiVolume * 32768) / 8);
+    Mix_SetPostMix(mix_effects, NULL);
+    printf("SFX: direct U8 mixing, %u bytes fixed workspace, no conversion cache\n",
+           (unsigned)(sizeof(slots) + sizeof(accumulation)));
+    return 0;
 }
 
-/*
- * Play-time conversion. Performs output conversion only once per sound effect used.
- * Once the sound sample has been converted, it is cached in SoundChunks[]
- */
-void mixdigi_convert_sound(int i)
+void digi_mixer_close(void)
 {
-	SDL_AudioCVT cvt;
-	Uint8 *data = GameSounds[i].data;
-	Uint32 dlen = GameSounds[i].length;
-	int freq = GameSounds[i].freq;
-	//int bits = GameSounds[i].bits;
-
-	if (SoundChunks[i].abuf) return; //proceed only if not converted yet
-
-	if (data)
-	{
-		if (MIX_DIGI_DEBUG) con_printf(CON_DEBUG,"converting %d (%d)\n", i, dlen);
-		SDL_BuildAudioCVT(&cvt, AUDIO_U8, 1, freq, MIX_OUTPUT_FORMAT, MIX_OUTPUT_CHANNELS, digi_sample_rate);
-
-		cvt.buf = malloc(dlen * cvt.len_mult);
-        if (!cvt.buf) Error("Out of memory converting sound");
-		cvt.len = dlen;
-		memcpy(cvt.buf, data, dlen);
-		if (SDL_ConvertAudio(&cvt)) con_printf(CON_DEBUG,"conversion of %d failed\n", i);
-
-		SoundChunks[i].abuf = cvt.buf;
-		SoundChunks[i].alen = cvt.len_cvt;
-		SoundChunks[i].allocated = 1;
-		SoundChunks[i].volume = 128; // Max volume = 128
-	}
+    if (!digi_initialised) return;
+    /* Detaching waits for any in-flight callback before slots can be cleared. */
+    Mix_SetPostMix(NULL, NULL);
+    digi_mixer_stop_all_channels();
+    digi_initialised = 0;
+    Mix_CloseAudio();
+    printf("SFX: starts=%u peak_channels=%u full_channels=%u conversion_bytes=0\n",
+           starts, peak_channels, full_channels);
 }
 
-// Volume 0-F1_0
-int digi_mixer_start_sound(short soundnum, fix volume, int pan, int looping, int loop_start, int loop_end, int soundobj)
+int digi_mixer_start_sound(short soundnum, fix volume, int pan, int looping,
+                          int loop_start, int loop_end, int soundobj)
 {
-	int mix_vol = fix2byte(fixmul(digi_volume, volume));
-	int mix_pan = fix2byte(pan);
-	int mix_loop = looping * -1;
-	int channel;
-
-	if (!digi_initialised) return -1;
-	Assert(GameSounds[soundnum].data != (void *)-1);
-
-	mixdigi_convert_sound(soundnum);
-
-	if (MIX_DIGI_DEBUG) con_printf(CON_DEBUG,"digi_start_sound %d, volume %d, pan %d (start=%d, end=%d)\n", soundnum, mix_vol, mix_pan, loop_start, loop_end);
-
-	channel = digi_mixer_find_channel();
-
-	Mix_PlayChannel(channel, &(SoundChunks[soundnum]), mix_loop);
-	Mix_SetPanning(channel, 255-mix_pan, mix_pan);
-	if (volume > F1_0)
-		Mix_SetDistance(channel, 0);
-	else
-		Mix_SetDistance(channel, 255-mix_vol);
-	channels[channel] = 1;
-	Mix_ChannelFinished(digi_mixer_free_channel);
-
-	return channel;
+    struct effect_slot *slot;
+    digi_sound *sound;
+    int channel = -1, active = 0;
+    if (!digi_initialised || soundnum < 0 || soundnum >= MAX_SOUNDS) return -1;
+    sound = &GameSounds[soundnum];
+    if (!sound->data || sound->data == (void *)-1 || sound->length <= 0 ||
+        sound->bits != 8 || sound->freq <= 0 || sound->freq > 192000) return -1;
+    SDL_LockAudio();
+    for (int i = 0; i < digi_max_channels; ++i) {
+        if (slots[i].playing) ++active;
+        else if (channel < 0) channel = i;
+    }
+    if (channel < 0) {
+        ++full_channels;
+        SDL_UnlockAudio();
+        return -1;
+    }
+    slot = &slots[channel];
+    /* Retire an expired engine reference before this channel is reused. These
+     * functions only update engine bookkeeping; never run them on audio thread. */
+    if (slot->soundobj > -1) digi_end_soundobj(slot->soundobj);
+    if (SoundQ_channel == channel) SoundQ_end();
+    slot->data = sound->data;
+    slot->length = sound->length;
+    slot->rate = sound->freq;
+    slot->position = slot->phase = 0;
+    slot->looping = looping != 0;
+    slot->loop_start = 0;
+    slot->loop_end = sound->length;
+    if (loop_start >= 0 && loop_start < loop_end && loop_end <= sound->length) {
+        slot->loop_start = loop_start;
+        slot->loop_end = loop_end;
+    }
+    slot->volume = volume;
+    slot->pan = pan;
+    slot->soundno = soundnum;
+    slot->soundobj = soundobj;
+    update_gains(slot);
+    slot->playing = 1;
+    ++starts;
+    if ((unsigned)(active + 1) > peak_channels) peak_channels = active + 1;
+    SDL_UnlockAudio();
+    return channel;
 }
 
 void digi_mixer_set_channel_volume(int channel, int volume)
 {
-	int mix_vol = fix2byte(volume);
-	if (!digi_initialised) return;
-	Mix_SetDistance(channel, 255-mix_vol);
+    if (!digi_initialised || channel < 0 || channel >= digi_max_channels) return;
+    SDL_LockAudio();
+    slots[channel].volume = volume;
+    update_gains(&slots[channel]);
+    SDL_UnlockAudio();
 }
 
 void digi_mixer_set_channel_pan(int channel, int pan)
 {
-	int mix_pan = fix2byte(pan);
-	Mix_SetPanning(channel, 255-mix_pan, mix_pan);
+    if (!digi_initialised || channel < 0 || channel >= digi_max_channels) return;
+    SDL_LockAudio();
+    slots[channel].pan = pan;
+    update_gains(&slots[channel]);
+    SDL_UnlockAudio();
 }
 
 void digi_mixer_stop_sound(int channel)
 {
-	if (!digi_initialised) return;
-	if (MIX_DIGI_DEBUG) con_printf(CON_DEBUG,"digi_stop_sound %d\n", channel);
-	Mix_HaltChannel(channel);
-	channels[channel] = 0;
+    if (!digi_initialised || channel < 0 || channel >= digi_max_channels) return;
+    SDL_LockAudio();
+    slots[channel].playing = 0;
+    slots[channel].soundobj = -1;
+    SDL_UnlockAudio();
 }
 
 void digi_mixer_end_sound(int channel)
 {
-	digi_mixer_stop_sound(channel);
-	channels[channel] = 0;
+    /* An object going away releases ownership; its one-shot may finish. */
+    if (!digi_initialised || channel < 0 || channel >= digi_max_channels) return;
+    SDL_LockAudio();
+    slots[channel].soundobj = -1;
+    SDL_UnlockAudio();
 }
 
-void digi_mixer_set_digi_volume( int dvolume )
+void digi_mixer_set_digi_volume(int volume)
 {
-	digi_volume = dvolume;
-	if (!digi_initialised) return;
-	Mix_Volume(-1, fix2byte(dvolume));
+    if (digi_initialised) SDL_LockAudio();
+    digi_volume = clamp(volume, 0, 32768);
+    if (digi_initialised) {
+        for (int i = 0; i < digi_max_channels; ++i) update_gains(&slots[i]);
+        SDL_UnlockAudio();
+    }
 }
 
-int digi_mixer_is_sound_playing(int soundno) { return 0; }
-int digi_mixer_is_channel_playing(int channel) { return 0; }
-
-void digi_mixer_reset() {}
-void digi_mixer_stop_all_channels()
+int digi_mixer_is_channel_playing(int channel)
 {
-	Mix_HaltChannel(-1);
-	memset(channels, 0, MAX_SOUND_SLOTS);
+    int playing;
+    if (!digi_initialised || channel < 0 || channel >= digi_max_channels) return 0;
+    SDL_LockAudio();
+    playing = slots[channel].playing;
+    SDL_UnlockAudio();
+    return playing;
 }
 
-extern void digi_end_soundobj(int channel);
+int digi_mixer_is_sound_playing(int soundno)
+{
+    int playing = 0;
+    if (!digi_initialised || soundno < 0 || soundno >= MAX_SOUNDS) return 0;
+    soundno = digi_xlat_sound(soundno);
+    if (soundno < 0) return 0;
+    SDL_LockAudio();
+    for (int i = 0; i < digi_max_channels; ++i)
+        if (slots[i].playing && slots[i].soundno == soundno) { playing = 1; break; }
+    SDL_UnlockAudio();
+    return playing;
+}
 
- //added on 980905 by adb to make sound channel setting work
-void digi_mixer_set_max_channels(int n) { }
-int digi_mixer_get_max_channels() { return digi_max_channels; }
-// end edit by adb
+void digi_mixer_stop_all_channels(void)
+{
+    if (!digi_initialised) return;
+    SDL_LockAudio();
+    for (int i = 0; i < MAX_SOUND_SLOTS; ++i) {
+        slots[i].playing = 0;
+        slots[i].soundobj = -1;
+    }
+    SDL_UnlockAudio();
+}
 
-
+void digi_mixer_reset(void) { digi_mixer_stop_all_channels(); }
+void digi_mixer_set_max_channels(int count)
+{
+    digi_mixer_stop_all_channels();
+    if (digi_initialised) SDL_LockAudio();
+    digi_max_channels = clamp(count, 1, MAX_SOUND_SLOTS);
+    if (digi_initialised) SDL_UnlockAudio();
+}
+int digi_mixer_get_max_channels(void) { return digi_max_channels; }
 #ifndef NDEBUG
-void digi_mixer_debug() {}
+void digi_mixer_debug(void) { }
 #endif

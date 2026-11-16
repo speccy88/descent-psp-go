@@ -970,6 +970,8 @@ void piggy_dump_all()
 void piggy_close()
 {
 	int i;
+	/* The direct mixer borrows the original sample buffers. */
+	digi_stop_all_channels();
 
 	custom_close();
 	piggy_close_file();

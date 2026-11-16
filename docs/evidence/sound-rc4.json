@@ -1,0 +1,14 @@
+{
+  "eboot_sha256": "9b6b6c419107ee63e08df6dc29b734370f9ba506a7c38d28db5d46d17dfea64f",
+  "emulator": "PPSSPP 1.20.4, PSPModel=0, software graphics, IgnoreBadMemAccess=False",
+  "pilot": "copy of physical PSP pilot; package contains no user state",
+  "gameplay_entry_ms": 53568,
+  "sound_starts": 862,
+  "peak_channels": 13,
+  "full_channels": 0,
+  "conversion_bytes": 0,
+  "music_blocks": 10168,
+  "music_starvation": 0,
+  "exit": "normal game menu exit, debugger game.status game=null",
+  "hardware_rc4_tested": false
+}

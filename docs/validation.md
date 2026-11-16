@@ -1,6 +1,6 @@
 # Validation — 2026-11-15
 
-The original release results below are historical. Later physical PSP Go tests exposed startup alignment faults and a saved-pilot loading failure. See [startup-investigation.md](startup-investigation.md) for the hardware evidence, reproduced faults and current rc.3 correction. Physical gameplay remains unverified.
+The original release results below are historical. Later physical PSP Go tests exposed startup alignment faults and a saved-pilot loading failure; rc.3 then reached gameplay, which the user reported worked well until sound conversion exhausted the heap. See [startup-investigation.md](startup-investigation.md) for the startup fixes and [sound-memory.md](sound-memory.md) for the rc.4 correction, stress tests and remaining physical acceptance.
 
 Candidate 0.1.0, Descent 1 PC shareware 1.4 (seven levels). PSP EBOOT SHA-256: `b7f075bfa9946adbc799443bfffe59a1aafc258ecafae19c24396d6b11e28553`.
 

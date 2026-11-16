@@ -1,6 +1,7 @@
-Descent PSP Go - 0.1.0 candidate (2026-11-15)
+Descent PSP Go - 0.1.0-rc.4 candidate
 Native D1X-Rebirth 0.58.1 port / Descent 1 PC shareware 1.4 / seven levels.
-Hardware gameplay and frame rates are NOT VERIFIED.
+The user confirmed gameplay on PSP Go with rc.3, then encountered a sound-memory exit.
+rc.4 fixes the growing sound cache; extended physical gameplay and frame rates remain unverified.
 
 Launch: Game > System Storage > Descent PSP Go after safely ejecting USB.
 Keep EBOOT.PBP, data, userdata, logs and licenses in this application folder.

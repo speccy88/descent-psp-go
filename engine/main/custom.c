@@ -614,6 +614,8 @@ void custom_remove()
 	int i;
 	grs_bitmap *bmo = BitmapOriginal;
 	grs_bitmap *bmp = GameBitmaps;
+	/* Finish borrowing custom samples before their buffers are restored/freed. */
+	digi_stop_all_channels();
 
 	for (i = 0; i < MAX_BITMAP_FILES; bmo++, bmp++, i++)
 		if (bmo->bm_flags & 0x80)
