@@ -1,6 +1,6 @@
 # Descent PSP Go
 
-Native Descent 1 PSP Go development candidate, based on pinned D1X-Rebirth 0.58.1. Local setup supplies PC shareware 1.4 (seven levels), not the registered campaign. The user confirmed successful physical gameplay with rc.3, followed by a sound-conversion out-of-memory exit. The rc.4 correction removes that growing conversion cache; extended physical validation remains pending.
+Native Descent 1 PSP Go development candidate, based on pinned D1X-Rebirth 0.58.1. Local setup supplies PC shareware 1.4 (seven levels), not the registered campaign. The user confirmed successful physical gameplay with rc.3, followed by a sound-conversion out-of-memory exit. The rc.4 correction removes that growing conversion cache. The PSP Go owner reported improved gameplay on rc.4. Extended hardware testing remains pending.
 
 The startup/alignment recovery candidate and its current hardware evidence are documented in [docs/startup-investigation.md](docs/startup-investigation.md).
 The gameplay sound-memory correction is documented in [docs/sound-memory.md](docs/sound-memory.md).

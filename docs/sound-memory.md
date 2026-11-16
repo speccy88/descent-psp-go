@@ -77,7 +77,8 @@ the repository. Without an argument, the synthetic functional tests still run.
 rc.4 EBOOT SHA-256:
 `9b6b6c419107ee63e08df6dc29b734370f9ba506a7c38d28db5d46d17dfea64f`.
 
-Extended physical gameplay of rc.4 remains to be tested. The correction removes
-the identified sound-conversion allocation path; it does not establish that
-every remaining engine allocation can never fail. Later levels, reactor escape,
-physical suspend/resume and sustained dense combat remain acceptance gaps.
+On November 16, 2026, the PSP Go owner tested the installed rc.4 build and
+reported that gameplay worked much better after the audio fix. This is
+user-reported hardware feedback. The run duration and level reached were not
+recorded. Longer sessions, later levels, reactor escape, suspend/resume and
+sustained dense combat still need physical testing.
