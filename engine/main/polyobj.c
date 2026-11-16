@@ -42,6 +42,7 @@ COPYRIGHT 1993-1998 PARALLAX SOFTWARE CORPORATION.  ALL RIGHTS RESERVED.
 #include "piggy.h"
 #endif
 #include "byteswap.h"
+#include "startup.h"
 #include "render.h"
 #ifdef OGL
 #include "ogl_init.h"
@@ -81,16 +82,16 @@ void _pof_cfseek(int len,int type)
 
 int pof_read_int(ubyte *bufp)
 {
-	int i;
+    int value;
 
-	i = *((int *) &bufp[Pof_addr]);
-	Pof_addr += 4;
-	return INTEL_INT(i);
+    if (Pof_addr < 0 || Pof_addr > Pof_file_end - (int)sizeof(value))
+        Error("Unexpected end of polygon model while reading a 32-bit field");
 
-//	if (PHYSFS_read(f,&i,sizeof(i),1) != 1)
-//		Error("Unexpected end-of-file while reading object");
-//
-//	return i;
+    /* POF fields follow a six-byte header and variable-length chunks.
+     * Copy into aligned storage before interpreting the little-endian value. */
+    memcpy(&value, bufp + Pof_addr, sizeof(value));
+    Pof_addr += sizeof(value);
+    return INTEL_INT(value);
 }
 
 size_t pof_cfread(void *dst, size_t elsize, size_t nelem, ubyte *bufp)
@@ -113,15 +114,14 @@ size_t pof_cfread(void *dst, size_t elsize, size_t nelem, ubyte *bufp)
 
 short pof_read_short(ubyte *bufp)
 {
-	short s;
+    short value;
 
-	s = *((short *) &bufp[Pof_addr]);
-	Pof_addr += 2;
-	return INTEL_SHORT(s);
-//	if (PHYSFS_read(f,&s,sizeof(s),1) != 1)
-//		Error("Unexpected end-of-file while reading object");
-//
-//	return s;
+    if (Pof_addr < 0 || Pof_addr > Pof_file_end - (int)sizeof(value))
+        Error("Unexpected end of polygon model while reading a 16-bit field");
+
+    memcpy(&value, bufp + Pof_addr, sizeof(value));
+    Pof_addr += sizeof(value);
+    return INTEL_SHORT(value);
 }
 
 void pof_read_string(char *buf,int max, ubyte *bufp)
@@ -270,6 +270,8 @@ void align_polygon_model_data(polymodel *pm)
 //reads a binary file containing a 3d model
 polymodel *read_model_file(polymodel *pm,char *filename,robot_info *r)
 {
+	PSP_BOOT_STAGE("reading polygon model");
+	PSP_BOOT_STAGE(filename);
 	PHYSFS_file *ifile;
 	short version;
 	int id,len, next_chunk;

@@ -50,6 +50,7 @@ COPYRIGHT 1993-1998 PARALLAX SOFTWARE CORPORATION.  ALL RIGHTS RESERVED.
 #include "endlevel.h"
 #include "cntrlcen.h"
 #include "rle.h"
+#include "startup.h"
 
 #ifdef EDITOR
 #include "editor/texpage.h"
@@ -122,13 +123,19 @@ int gamedata_init()
 {
 	int retval;
 	
+	PSP_BOOT_STAGE("initializing model and endlevel state");
 	init_polygon_models();
 	init_endlevel();//adb: added, is also in bm_init_use_tbl (Chris: *Was* in bm_init_use_tbl)
+	PSP_BOOT_STAGE("loading bitmap and sound directory");
 	retval = properties_init();				// This calls properties_read_cmp if appropriate
-	if (retval)
+	if (retval) {
+		PSP_BOOT_STAGE("reading game properties and models");
 		gamedata_read_tbl(retval == PIGGY_PC_SHAREWARE);
+	}
 
+	PSP_BOOT_STAGE("loading sound samples");
 	piggy_read_sounds(retval == PIGGY_PC_SHAREWARE);
+	PSP_BOOT_STAGE("sound samples loaded");
 	
 	return 0;
 }

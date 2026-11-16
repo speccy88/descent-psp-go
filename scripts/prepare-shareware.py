@@ -17,7 +17,7 @@ verify_pbp = verifier["verify_pbp"]
 
 SHAREWARE_URL = "https://icculus.org/d2x/data/desc14sw.tar.gz"
 SHAREWARE_SHA256 = "8b65eda01d03401d7a2dc71976528fbb7e0b07a93ce8ee0a9f1d9103623ae249"
-EBOOT_SHA256 = "b7f075bfa9946adbc799443bfffe59a1aafc258ecafae19c24396d6b11e28553"
+EBOOT_SHA256 = "b03b65752ee11d75beac99566c57e2c547ebe80058a28846f755dbe955a49c88"
 
 
 def sha256(path):
@@ -94,7 +94,7 @@ def prepare(root, archive, music):
     for folder in ("data", "licenses", "music"):
         paths.extend(path for path in sorted((root / folder).glob("*")) if path.is_file())
     manifest = {
-        "version": "0.1.0-candidate",
+        "version": "0.1.0-rc.2",
         "edition": edition["edition"],
         "hardware_tested": False,
         "files": [{"path": path.relative_to(root).as_posix(),

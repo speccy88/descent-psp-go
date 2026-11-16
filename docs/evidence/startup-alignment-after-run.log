@@ -1,0 +1,11 @@
+
+Type build/desktop-alignment/descent-go -help' for a list of command-line options.
+
+D1X-Rebirth v0.58.1  Nov 15 2026 21:24:45
+This is a MODIFIED version of Descent, based on Registered v1.5 Jan 5, 1996.
+Copyright (c) 1994 Parallax Software Corporation
+DESCENT is a trademark of Interplay Productions, Inc.
+Copyright (C) 2005-2011 Christian Beckhaeuser
+
+Using SDL_mixer library
+sdl-joystick: found 0 joysticks

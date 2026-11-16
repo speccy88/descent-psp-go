@@ -1,5 +1,7 @@
 # Validation — 2026-11-15
 
+The original release results below are historical. A physical PSP Go subsequently reached the title with music but froze during game-data loading. See [startup-investigation.md](startup-investigation.md) for the reduced-memory candidate, reproduced alignment faults and current correction. Physical gameplay remains unverified.
+
 Candidate 0.1.0, Descent 1 PC shareware 1.4 (seven levels). PSP EBOOT SHA-256: `b7f075bfa9946adbc799443bfffe59a1aafc258ecafae19c24396d6b11e28553`.
 
 ## Builds and focused checks

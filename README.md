@@ -2,6 +2,8 @@
 
 Native Descent 1 PSP Go development candidate, based on pinned D1X-Rebirth 0.58.1. The package contains PC shareware 1.4 (seven levels), not the registered campaign. Build and emulator validation are documented in docs; physical gameplay remains unverified.
 
+The startup/alignment recovery candidate and its current hardware evidence are documented in [docs/startup-investigation.md](docs/startup-investigation.md).
+
 ## Install a release
 
 Download the PSP ZIP and follow [INSTALL.md](INSTALL.md). The release includes a helper that fetches and verifies the original shareware data. Sound effects work with that data, and the guide includes steps to generate the optional music tracks.
@@ -16,6 +18,7 @@ python3 scripts/prepare-host-deps.py   # extracts pinned packages locally; no su
 source scripts/desktop-env.sh
 bash scripts/build-desktop.sh
 bash scripts/test-host.sh
+bash scripts/test-alignment.sh
 export PSPDEV=/absolute/path/to/pspdev
 bash scripts/build-psp.sh build/diagnostic ON
 bash scripts/build-psp.sh build/psp OFF

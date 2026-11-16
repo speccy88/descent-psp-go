@@ -633,7 +633,9 @@ void bm_read_eclip(int skip)
 		bitmap_index bm[MAX_BITMAPS_PER_BRUSH];
 		abm_flag = 0;
 
-		ab_load(skip, arg, bm, &Effects[clip_num].vc.num_frames );
+		int num_frames;
+		ab_load(skip, arg, bm, &num_frames);
+		Effects[clip_num].vc.num_frames = num_frames;
 
 		Effects[clip_num].vc.play_time = fl2f(play_time);
 		Effects[clip_num].vc.frame_time = Effects[clip_num].vc.play_time/Effects[clip_num].vc.num_frames;
@@ -826,7 +828,9 @@ void bm_read_vclip(int skip)
 		abm_flag = 0;
 		if ( (Vclip[clip_num].num_frames>-1)  )
 			Error( "AB_Vclip %d is already used!", clip_num );
-		ab_load(skip, arg, bm, &Vclip[clip_num].num_frames );
+		int num_frames;
+		ab_load(skip, arg, bm, &num_frames);
+		Vclip[clip_num].num_frames = num_frames;
 
 		if (rod_flag) {
 			//int i;
@@ -847,14 +851,16 @@ void bm_read_vclip(int skip)
 }
 
 // ------------------------------------------------------------------------------
-void get4fix(fix *fixp)
+void get4fix(void *destination)
 {
 	char	*curtext;
 	int	i;
 
 	for (i=0; i<NDL; i++) {
 		curtext = strtok(NULL, space);
-		fixp[i] = fl2f(atof(curtext));
+		fix value = fl2f(atof(curtext));
+		/* robot_info is packed; its fix arrays need not be aligned. */
+		memcpy((ubyte *)destination + i * sizeof(value), &value, sizeof(value));
 	}
 }
 
@@ -872,7 +878,7 @@ void get4byte(sbyte *bytep)
 
 // ------------------------------------------------------------------------------
 //	Convert field of view from an angle in 0..360 to cosine.
-void adjust_field_of_view(fix *fovp)
+void adjust_field_of_view(void *destination)
 {
 	int		i;
 	fixang	tt;
@@ -880,13 +886,16 @@ void adjust_field_of_view(fix *fovp)
 	fix		temp;
 
 	for (i=0; i<NDL; i++) {
-		ff = - f2fl(fovp[i]);
+		fix value;
+		memcpy(&value, (ubyte *)destination + i * sizeof(value), sizeof(value));
+		ff = - f2fl(value);
 		if (ff > 179) {
 			ff = 179;
 		}
 		ff = ff/360;
 		tt = fl2f(ff);
-		fix_sincos(tt, &temp, &fovp[i]);
+		fix_sincos(tt, &temp, &value);
+		memcpy((ubyte *)destination + i * sizeof(value), &value, sizeof(value));
 	}
 }
 

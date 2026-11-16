@@ -1,0 +1,28 @@
+
+Type <project>/build/desktop-alignment/descent-go -help' for a list of command-line options.
+
+D1X-Rebirth v0.58.1  Nov 15 2026 21:24:45
+This is a MODIFIED version of Descent, based on Registered v1.5 Jan 5, 1996.
+Copyright (c) 1994 Parallax Software Corporation
+DESCENT is a trademark of Interplay Productions, Inc.
+Copyright (C) 2005-2011 Christian Beckhaeuser
+
+Using SDL_mixer library
+sdl-joystick: found 0 joysticks
+
+<project>/engine/main/polyobj.c:86:4: runtime error: load of misaligned address 0x7ffef62749fa for type 'int', which requires 4 byte alignment
+0x7ffef62749fa: note: pointer points here
+ 54 58  54 52 1a 00 00 00 03 00  52 42 4f 54 30 31 30 00  52 42 4f 54 30 31 31 00  52 42 4f 54 30 31
+              ^ 
+    #0 0x65256197f6b7 in pof_read_int <project>/engine/main/polyobj.c:86
+    #1 0x65256197f6b7 in read_model_file <project>/engine/main/polyobj.c:300
+    #2 0x6525619802cc in load_polygon_model <project>/engine/main/polyobj.c:678
+    #3 0x652561912d9f in bm_read_robot <project>/engine/main/bmread.c:1124
+    #4 0x652561912d9f in bm_read_robot <project>/engine/main/bmread.c:1004
+    #5 0x652561915d23 in gamedata_read_tbl <project>/engine/main/bmread.c:508
+    #6 0x6525619104d7 in gamedata_init <project>/engine/main/bm.c:129
+    #7 0x6525618ee87e in main <project>/engine/main/inferno.c:400
+    #8 0x789a1f02a600  (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a600) (BuildId: 9851d79b1f32e900a27f8d0a68e29d750303f0c6)
+    #9 0x789a1f02a717 in __libc_start_main (/usr/lib/x86_64-linux-gnu/libc.so.6+0x2a717) (BuildId: 9851d79b1f32e900a27f8d0a68e29d750303f0c6)
+    #10 0x6525618eeb24 in _start (<project>/build/desktop-alignment/descent-go+0x20b24) (BuildId: 716a08c84978c7a0eb47315654cad34e6dd08d71)
+
