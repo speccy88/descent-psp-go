@@ -1,3 +1,4 @@
+#include "startup.h"
 /*
 THE COMPUTER CODE CONTAINED HEREIN IS THE SOLE PROPERTY OF PARALLAX
 SOFTWARE CORPORATION ("PARALLAX").  PARALLAX, IN DISTRIBUTING THE CODE TO
@@ -297,6 +298,7 @@ int main(int argc, char *argv[])
 	error_init(msgbox_error);
 	set_warn_func(msgbox_warning);
 #endif
+	PSP_BOOT_STAGE("initializing filesystem");
 	PHYSFSX_init(argc, argv);
 	con_init();  // Initialise the console
 
@@ -319,6 +321,7 @@ int main(int argc, char *argv[])
 	if (!PHYSFSX_checkSupportedArchiveTypes())
 		return(0);
 
+	PSP_BOOT_STAGE("mounting game data");
 	if (! PHYSFSX_contfile_init("descent.hog", 1))
 #define DXX_NAME_NUMBER	"1"
 #define DXX_HOGFILE_NAMES	"descent.hog"
@@ -365,6 +368,7 @@ int main(int argc, char *argv[])
 	
 	ReadConfigFile();
 #ifdef PSP_PORT
+ if (psp_boot_no_audio) GameArg.SndNoSound = 1;
  GameArg.CtlNoJoystick=1; Game_screen_mode=SM(320,200); GameCfg.AspectX=3; GameCfg.AspectY=4; GameCfg.VSync=0; GameCfg.WindowMode=0;
 #endif
 
@@ -386,12 +390,15 @@ int main(int argc, char *argv[])
 
 	set_default_handler(standard_handler);
 
+	PSP_BOOT_STAGE("opening title screen");
 	show_titles();
 
 	set_screen_mode(SCREEN_MENU);
 
 	con_printf( CON_DEBUG, "\nDoing gamedata_init..." );
+	PSP_BOOT_STAGE("loading game data");
 	gamedata_init();
+	PSP_BOOT_STAGE("game data loaded");
 
 	if (GameArg.DbgNoRun)
 		return(0);

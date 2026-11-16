@@ -1,3 +1,4 @@
+#include "startup.h"
 // Holds the main init and de-init functions for arch-related program parts
 
 #include <SDL/SDL.h>
@@ -37,6 +38,7 @@ void arch_init(void)
 {
 	int t;
 
+	PSP_BOOT_STAGE("initializing SDL");
 	if (SDL_Init(
 #ifdef PSP_PORT
 0
@@ -50,17 +52,20 @@ SDL_INIT_VIDEO
 
 	digi_select_system( GameArg.SndDisableSdlMixer ? SDLAUDIO_SYSTEM : SDLMIXER_SYSTEM );
 
-	if (!GameArg.SndNoSound)
+	if (!GameArg.SndNoSound) {
+		PSP_BOOT_STAGE("opening audio");
 		digi_init();
+		PSP_BOOT_STAGE("audio opened");
+	}
 
 	mouse_init();
 
 	if (!GameArg.CtlNoJoystick)
 		joy_init();
 
+	PSP_BOOT_STAGE("allocating video canvas");
 	if ((t = gr_init(0)) != 0)
 		Error(TXT_CANT_INIT_GFX,t);
 
 	atexit(arch_close);
 }
-

@@ -1,3 +1,4 @@
+#include "startup.h"
 /*
 THE COMPUTER CODE CONTAINED HEREIN IS THE SOLE PROPERTY OF PARALLAX
 SOFTWARE CORPORATION ("PARALLAX").  PARALLAX, IN DISTRIBUTING THE CODE TO
@@ -305,6 +306,10 @@ int songs_play_file(char *filename, int repeat, void (*hook_finished_track)())
 
 int songs_play_song( int songnum, int repeat )
 {
+#ifdef PSP_PORT
+	if (psp_boot_no_audio)
+		return 0;
+#endif
 	songs_init();
 	if (!Songs_initialized)
 		return 0;
@@ -384,6 +389,10 @@ void redbook_first_song_func()
 // play track given by levelnum (depending on the music type and it's playing behaviour) or increment/decrement current track number via offset value
 int songs_play_level_song( int levelnum, int offset )
 {
+#ifdef PSP_PORT
+	if (psp_boot_no_audio)
+		return 0;
+#endif
 	int songnum;
 
 	Assert( levelnum != 0 );

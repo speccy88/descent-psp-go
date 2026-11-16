@@ -520,13 +520,17 @@ int load_mine_data_compiled(PHYSFS_file *LoadFile)
 		Num_vertices = PHYSFSX_readShort(LoadFile);
 	else
 		Num_vertices = PHYSFSX_readInt(LoadFile);
-	Assert( Num_vertices <= MAX_VERTICES );
+	if (Num_vertices <= 0 || Num_vertices > MAX_VERTICES)
+        Error("Level vertex count %d exceeds the supported range (1 to %d).",
+              Num_vertices, MAX_VERTICES);
 	
 	if (New_file_format_load)
 		Num_segments = PHYSFSX_readShort(LoadFile);
 	else
 		Num_segments = PHYSFSX_readInt(LoadFile);
-	Assert( Num_segments <= MAX_SEGMENTS );
+	if (Num_segments <= 0 || Num_segments > MAX_SEGMENTS)
+        Error("Level segment count %d exceeds the supported range (1 to %d).",
+              Num_segments, MAX_SEGMENTS);
 	
 	for (i = 0; i < Num_vertices; i++)
 		PHYSFSX_readVector( &(Vertices[i]), LoadFile);

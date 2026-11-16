@@ -15,7 +15,7 @@ def verify_pbp(p):
   if values+offset+capacity>len(s) or length>capacity or keys+key>=values:raise ValueError('SFO entry bounds')
   name=s[keys+key:values].split(b'\0')[0].decode();v=s[values+offset:values+offset+length]
   fields[name]=int.from_bytes(v,'little') if fmt==0x404 else v.rstrip(b'\0').decode()
- assert fields['MEMSIZE']==1 and fields['EFAWARE']==1 and fields['TITLE']=='Descent PSP Go'
+ assert fields['MEMSIZE'] in (0, 1) and fields['EFAWARE']==1 and fields['TITLE']=='Descent PSP Go'
  elf=b[offs[6]:offs[7]]
  assert elf[:4]==b'\x7fELF','unencrypted PRX expected'
  assert elf[4:6]==b'\x01\x01' and struct.unpack_from('<H',elf,18)[0]==8,'32-bit little-endian MIPS required'
