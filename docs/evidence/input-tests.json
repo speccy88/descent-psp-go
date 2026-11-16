@@ -1,0 +1,13 @@
+{
+  "forward": true,
+  "modifier_replaces_forward": true,
+  "layer_release_restores_forward": true,
+  "slide": true,
+  "roll_replaces_slide": true,
+  "vertical_down": true,
+  "primary": true,
+  "secondary_suppresses_primary": true,
+  "primary_restored": true,
+  "analog_two_axes": true,
+  "neutral_clears_axes": true
+}

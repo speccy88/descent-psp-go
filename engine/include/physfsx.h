@@ -15,6 +15,15 @@
 // the framework form will be supported again -kreatordxx
 #if 1	//!(defined(__APPLE__) && defined(__MACH__))
 #include <physfs.h>
+#ifdef PSP_PORT
+PHYSFS_File *psp_open_write(const char*);
+PHYSFS_sint64 psp_write(PHYSFS_File*,const void*,PHYSFS_uint32,PHYSFS_uint32);
+int psp_close(PHYSFS_File*);
+#define PHYSFS_openWrite psp_open_write
+#define PHYSFS_write psp_write
+#define PHYSFS_close psp_close
+#endif
+
 #else
 #include <physfs/physfs.h>
 #endif

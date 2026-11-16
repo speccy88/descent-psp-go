@@ -289,7 +289,9 @@ jmp_buf LeaveEvents;
 int main(int argc, char *argv[])
 {
 	mem_init();
-#ifdef __LINUX__
+#if defined(PSP_PORT)
+ extern void psp_error(const char*);error_init(psp_error);
+#elif defined(__LINUX__)
 	error_init(NULL);
 #else
 	error_init(msgbox_error);
@@ -362,6 +364,9 @@ int main(int argc, char *argv[])
 		con_printf(CON_VERBOSE,"%s%s", TXT_VERBOSE_1, "\n");
 	
 	ReadConfigFile();
+#ifdef PSP_PORT
+ GameArg.CtlNoJoystick=1; Game_screen_mode=SM(320,200); GameCfg.AspectX=3; GameCfg.AspectY=4; GameCfg.VSync=0; GameCfg.WindowMode=0;
+#endif
 
 	PHYSFSX_addArchiveContent();
 

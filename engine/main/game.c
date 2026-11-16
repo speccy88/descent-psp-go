@@ -385,6 +385,7 @@ void calc_frame_time()
 	timer_value = timer_query();
 	FrameTime = timer_value - last_timer_value;
 
+#ifndef PSP_PORT
 	while (FrameTime < f1_0 / (GameCfg.VSync?MAXIMUM_FPS:GameArg.SysMaxFPS))
 	{
 		if (GameArg.SysUseNiceFPS && !GameCfg.VSync)
@@ -393,6 +394,7 @@ void calc_frame_time()
 		timer_value = timer_query();
 		FrameTime = timer_value - last_timer_value;
 	}
+#endif
 
 	if ( cheats.turbo )
 		FrameTime *= 2;

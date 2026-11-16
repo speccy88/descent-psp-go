@@ -1,0 +1,2 @@
+*.sh text eol=lf
+*.log -text whitespace=-blank-at-eof

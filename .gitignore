@@ -1,0 +1,12 @@
+.local/
+build/
+deps/
+assets/
+dist/
+backups/
+collected-logs/
+install-*.json
+__pycache__/
+tools/render-midi
+reference/
+scripts/desktop-env.sh

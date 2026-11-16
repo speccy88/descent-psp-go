@@ -1128,6 +1128,9 @@ void kconfig(int n, char * title)
 
 void kconfig_read_controls(d_event *event, int automap_flag)
 {
+#ifdef PSP_PORT
+ extern void psp_controls(int); psp_controls(automap_flag); return;
+#endif
 	int i = 0, j = 0, speed_factor = cheats.turbo?2:1;
 	static fix64 mouse_delta_time = 0;
 
@@ -1280,7 +1283,8 @@ void kconfig_read_controls(d_event *event, int automap_flag)
 			}
 			else
 			{
-				event_mouse_get_delta( event, &Controls.raw_mouse_axis[0], &Controls.raw_mouse_axis[1], &Controls.raw_mouse_axis[2] );
+				int ax[3]; event_mouse_get_delta(event, &ax[0], &ax[1], &ax[2]);
+                for (i=0;i<3;i++) Controls.raw_mouse_axis[i]=ax[i];
 				Controls.mouse_axis[0] = (Controls.raw_mouse_axis[0]*FrameTime)/8;
 				Controls.mouse_axis[1] = (Controls.raw_mouse_axis[1]*FrameTime)/8;
 				Controls.mouse_axis[2] = (Controls.raw_mouse_axis[2]*FrameTime);

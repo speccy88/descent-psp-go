@@ -4133,3 +4133,5 @@ void multi_object_rw_to_object(object_rw *obj_rw, object *obj)
 			
 	}
 }
+
+int multi_allow_powerup_mask[MAX_POWERUP_TYPES];

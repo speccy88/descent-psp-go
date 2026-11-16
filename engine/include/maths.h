@@ -4,6 +4,7 @@
 #define _MATHS_H
 
 #include <stdlib.h>
+#include <stdint.h>
 #include "pstypes.h"
 
 
@@ -29,7 +30,7 @@ quadint;
 
 
 //Convert an int to a fix/fix64 and back
-#define i2f(i) ((i)<<16)
+#define i2f(i) ((fix)((uint32_t)(i)<<16))
 #define f2i(f) ((f)>>16)
 
 //Get the int part of a fix, with rounding

@@ -25,6 +25,9 @@ static int initialised=0;
 
 void event_poll()
 {
+#ifdef PSP_PORT
+ extern void psp_poll(void),psp_lifecycle(void); psp_lifecycle(); psp_poll();
+#endif
 	SDL_Event event;
 	int clean_uniframe=1;
 	window *wind = window_get_front();
@@ -144,6 +147,9 @@ void event_send(d_event *event)
 // Uses the old system for now, but this may change
 void event_process(void)
 {
+#ifdef PSP_PORT
+ extern void psp_frame_begin(void);psp_frame_begin();
+#endif
 	d_event event;
 	window *wind = window_get_front();
 

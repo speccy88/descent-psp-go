@@ -1,0 +1,100 @@
+{
+  "engine": {
+    "url": "https://www.dxx-rebirth.com/d1x-rebirth_v0.58.1-src.tar.gz",
+    "sha256": "5befc8a2ab1159fdb4d4141ba9f0e229450592d5ada209e832101da5b0b3e38e",
+    "license": "Original Parallax non-commercial plus D1X-Rebirth terms; see engine/COPYING.txt"
+  },
+  "toolchain": {
+    "url": "https://github.com/pspdev/pspdev/releases/download/v20261101/pspdev-ubuntu-latest-x86_64.tar.gz",
+    "sha256": "5dc9d785a5fd490ee9d5204b90f715efb6c46940ba3944036bbef9c993c17713",
+    "build": "binutils a8b53fe2b5825fa86337623c743d21a19aeb0daf 2025-06-24 Allegrex 2.44 branch\nnewlib 09d1adaf18bdac953fc401deb3c04e41ae9ee510 2026-10-08 Merge pull request #15 from pspdev/psp-have-blksize\npthread-embedded 97fe4ce006b420894f2bcaeb530d1f1f53111fc2 2026-05-12 Merge pull request #3 from fjtrujy/fix/mutex-null-handle-rejection\ngcc 1a33997924916ff5a6f61b64179ff9c8921f46c6 2026-05-11 Merge pull request #10 from pspdev/allegrex-v15.2.0-fedore-fix\npsptoolchain-allegrex a95b7da838d9f506656092c3e0232dcf50389d89 2026-07-05 Merge pull request #71 from pspdev/ucs_2_encoding_newlib\npsptoolchain-extra b5f01b00e428a604832e0dfb4bfbb991d1397e3f 2026-06-12 Readd permission fix in CI\npsptoolchain 57a4fc650324dea4637ea5ef9dfc2fc292c004f8 2026-06-07 Merge pull request #199 from pspdev/add-dependencies-for-new-pacman\npspsdk c3da4314d783ac26323e5cdaf8163ac369c2089d 2026-10-29 feat(usb): Add sceUsbGps_driver stub library\npsplinkusb bae0ac40b2b52eb5762ecb52df4e7bb8e6c7ad5f 2026-10-28 Merge pull request #72 from pspdev/fix/usb-hostfs-long-uptime\nebootsigner 17d6386f034ac922f540ca78200961761b23ecae 2024-01-09 Merge pull request #4 from pspdev/make-readme-readable-on-github\npspdev 99dee465c534679f16cc7e0d9fc6a5b92d759d7d 2026-09-28 Merge pull request #148 from pspdev/fix-deprecation-warnings\n",
+    "compiler": "psp-gcc (GCC) 15.2.0"
+  },
+  "dependencies": {
+    "SDL": {
+      "sha256": "20610c28c445f034d8c21a692d89463bbe5caa27d393ac4e76ccafc3d1c81e6b"
+    },
+    "SDL_mixer": {
+      "sha256": "cc3309feb336059a68b34c807a2ab8ea18e12485c615799dfa72511563936ef5"
+    },
+    "physfs": {
+      "sha256": "8433b9a99242d81d22fb3a03b44915dcb287ce0925dee32e963414bb5c18cc4d"
+    },
+    "vorbis": {
+      "sha256": "fe52f23e5ff977ab0fb6d06a5e440b4cb1ad93fe7d0c7481f2ac6fdcbbe599a2"
+    },
+    "vorbisfile": {
+      "sha256": "3424a7f6e9c67a20efa53073042d9ab60444e46fd88805125ca28b28ed490214"
+    },
+    "ogg": {
+      "sha256": "7a73b4d16603033b25cf100cc1b15e5dc51a10be49192c4b135c441bf026eb3c"
+    },
+    "mikmod": {
+      "sha256": "961868850c953a908c9d6c6994f9d683449730b6fe236b1249e70a043a804b03"
+    },
+    "sdl-1.2.15-9": {
+      "package_metadata": "%NAME%\nsdl\n\n%VERSION%\n1.2.15-9\n\n%BASE%\nsdl\n\n%DESC%\nA library designed to provide low level access to audio, input, and graphics hardware\n\n%URL%\nhttps://www.libsdl.org/download-1.2.php\n\n%ARCH%\nany\n\n%BUILDDATE%\n1793322795\n\n%INSTALLDATE%\n1793568647\n\n%PACKAGER%\nUnknown Packager\n\n%SIZE%\n1284501\n\n%GROUPS%\npsp-libraries\n\n%LICENSE%\nLGPL-2.1-only\n\n%VALIDATION%\nsha256\n\n%DEPENDS%\npspirkeyb\n\n%XDATA%\npkgtype=pkg\n\n"
+    },
+    "physfs-3.2.0-7": {
+      "package_metadata": "%NAME%\nphysfs\n\n%VERSION%\n3.2.0-7\n\n%BASE%\nphysfs\n\n%DESC%\nPhysicsFS; a portable, flexible file i/o abstraction.\n\n%URL%\nhttps://icculus.org/physfs/\n\n%ARCH%\nany\n\n%BUILDDATE%\n1793322819\n\n%INSTALLDATE%\n1793568647\n\n%PACKAGER%\nUnknown Packager\n\n%SIZE%\n394240\n\n%GROUPS%\npsp-libraries\n\n%LICENSE%\nZlib\n\n%VALIDATION%\nsha256\n\n%XDATA%\npkgtype=pkg\n\n"
+    },
+    "libvorbis-1.3.7-8": {
+      "package_metadata": "%NAME%\nlibvorbis\n\n%VERSION%\n1.3.7-8\n\n%BASE%\nlibvorbis\n\n%DESC%\nVorbis audio compression reference implementation\n\n%URL%\nhttps://gitlab.xiph.org/xiph/vorbis\n\n%ARCH%\nany\n\n%BUILDDATE%\n1793322908\n\n%INSTALLDATE%\n1793568647\n\n%PACKAGER%\nUnknown Packager\n\n%SIZE%\n958683\n\n%GROUPS%\npsp-libraries\n\n%LICENSE%\nBSD-3-Clause\n\n%VALIDATION%\nsha256\n\n%DEPENDS%\nlibogg\n\n%XDATA%\npkgtype=pkg\n\n"
+    },
+    "libmikmod-3.3.11.1-11": {
+      "package_metadata": "%NAME%\nlibmikmod\n\n%VERSION%\n3.3.11.1-11\n\n%BASE%\nlibmikmod\n\n%DESC%\nA portable sound library capable of playing samples as well as module files\n\n%URL%\nhttp://mikmod.sourceforge.net/\n\n%ARCH%\nany\n\n%BUILDDATE%\n1793323020\n\n%INSTALLDATE%\n1793568647\n\n%PACKAGER%\nUnknown Packager\n\n%SIZE%\n509121\n\n%GROUPS%\npsp-libraries\n\n%LICENSE%\nLGPL-2.1-only\n\n%VALIDATION%\nsha256\n\n%XDATA%\npkgtype=pkg\n\n"
+    },
+    "libogg-1.3.6-2": {
+      "package_metadata": "%NAME%\nlibogg\n\n%VERSION%\n1.3.6-2\n\n%BASE%\nlibogg\n\n%DESC%\nLibrary for the multimedia container format, and the native file and stream format ogg\n\n%URL%\nhttps://www.xiph.org/ogg/\n\n%ARCH%\nany\n\n%BUILDDATE%\n1793323056\n\n%INSTALLDATE%\n1793568647\n\n%PACKAGER%\nUnknown Packager\n\n%SIZE%\n449615\n\n%GROUPS%\npsp-libraries\n\n%LICENSE%\nBSD-3-Clause\n\n%VALIDATION%\nsha256\n\n%XDATA%\npkgtype=pkg\n\n"
+    },
+    "sdl-mixer-1.2.14-11": {
+      "package_metadata": "%NAME%\nsdl-mixer\n\n%VERSION%\n1.2.14-11\n\n%BASE%\nsdl-mixer\n\n%DESC%\nAn audio mixer library based on the SDL library\n\n%URL%\nhttps://www.libsdl.org/projects/old/SDL_mixer/release-1.2.html\n\n%ARCH%\nany\n\n%BUILDDATE%\n1793323010\n\n%INSTALLDATE%\n1793568647\n\n%PACKAGER%\nUnknown Packager\n\n%SIZE%\n255998\n\n%GROUPS%\npsp-libraries\n\n%LICENSE%\nZlib\n\n%VALIDATION%\nsha256\n\n%DEPENDS%\nsdl\nlibmikmod\nlibogg\nlibvorbis\n\n%XDATA%\npkgtype=pkg\n\n"
+    }
+  },
+  "host_debs": {
+    "libmad0_0.16.4-2ubuntu1_amd64.deb": "aef6a762fc024300176f9066858fb14fa873d50e2b5392fd6a57781fc4c42d22",
+    "libpipewire-0.3-0t64_1.6.2-1ubuntu1.2_amd64.deb": "96eaa9689057c81795fecfbc730e33db26e333fdf31de6eecc63001de9abe936",
+    "libvorbisfile3_1.3.7-3build2_amd64.deb": "8cd42cc285e34f915e0e769bcffab29c4267fb6453295ed309d50f8f376eef37",
+    "libpkgconf7_2.5.1-4_amd64.deb": "353f622f6432a3d65bedd3c23e0af98c2c438650b497b355772a56a05ebf7dd0",
+    "libsdl-mixer1.2-dev_1.2.12-19build2_amd64.deb": "d208fe6ade0e20b8ddd37ce0d071b460275f1d39a552326780a0cb500d4a4e18",
+    "libphysfs-dev_3.2.0-1_amd64.deb": "bd592961d13b6f8e6bdade6d59c76a861232eec3726287ec34ac6641e6b58f59",
+    "libphysfs1_3.2.0-1_amd64.deb": "b6219090a7b96d3a0d1850bab0952f377ca9b3016e13d23b4035d804c709cf6d",
+    "libinstpatch-1.0-2_1.1.7-1.1_amd64.deb": "3b8bb6eb10d345a52a72b4514c14d4e2e0f8ebbd32d2207e5a3959b5a14a81ad",
+    "libsdl-mixer1.2_1.2.12-19build2_amd64.deb": "ce41c26d533542fbc3321cd99e7c63ae71c81fd60b32d8023bc9b5279a462ae5",
+    "pkgconf-bin_2.5.1-4_amd64.deb": "9690471f395b6652f2cd8962334b9400e26a10daf4af7bf2f2c1a0325c193f0b",
+    "libopenal1_1%3a1.25.1-2_amd64.deb": "da5971c70814a4614c04dcf7f46548a0eb409d5a82e1d35a346e9fb89d0df666",
+    "timgm6mb-soundfont_1.3-5build1_all.deb": "e34727ced73876bd5945b8104fa3a542ec752747f2b5855945edefccba09c7b9",
+    "libjack-jackd2-0_1.9.22~dfsg-5build1_amd64.deb": "129857d470a11901a74ad51eb249b5a7c4f46ff22981d9cb4e2996c6bdb8fe99",
+    "libsdl3-0_3.4.2+ds-1ubuntu1_amd64.deb": "9cffe342d34a7787e25ddb28d6244158a4b44f977a2ab29bc6f4526a29e11825",
+    "libfluidsynth3_2.4.8+dfsg-1_amd64.deb": "5ab91595f37941656f778f9556e9de3a7c32b7d0c8fa3fd120b90fe014e6152a",
+    "libmikmod3_3.3.13-1build1_amd64.deb": "e3fce675988395995314d7ae193d8dce7c9e852856a577548fe3c145284c6461",
+    "libvorbisenc2_1.3.7-3build2_amd64.deb": "b4230d0064eee971727b204e3d0644a4deb4a3d882eaac2304d379e7a5439f2a",
+    "libopus0_1.6.1-1_amd64.deb": "395f9e1bf29b804e42471e225976d69355c220bbfe469cb4ed387d36184b9bcc",
+    "libsamplerate0_0.2.2-4build2_amd64.deb": "c554aed04aa0c47928039dc158e26c2b6da44b4570d400574110dcdaedd03360",
+    "libasyncns0_0.8-7_amd64.deb": "952ea8a8d01a4fe98ff8379553a7a3764492897464c2684105f76ebb6b19939a",
+    "libxss1_1%3a1.2.3-1build4_amd64.deb": "04339441bb49c8b9c6d3297bb569b3b774de61e422f5e7334c34225b08709035",
+    "libsdl1.2debian_1.2.72-1_amd64.deb": "57ac5e7a31b8a7233cbe2d44c0752c3ab83cc47cba06176420d91101757d8f17",
+    "libsdl-image1.2-dev_1.2.12-14build1_amd64.deb": "b8504165f6ec351e88fb9966ce1c43d4f588a4439ee696f7001416c79fa249e2",
+    "libdecor-0-0_0.2.5-1_amd64.deb": "23ea4cd788fe5bf9883fd125dd1ac973db807b9a888dae70abde5bb9d2584de1",
+    "libsdl-image1.2_1.2.12-14build1_amd64.deb": "d6eaa8765dc54bebc370a5c6ae281a851062221f1ee6c427b2225b34260f64e9",
+    "libflac14_1.5.0+ds-5_amd64.deb": "ea6cbd9399a646b073d36d8d33444f39f9f1dd63f5fa8cd18906573f51cc305b",
+    "libsdl1.2-dev_1.2.72-1_amd64.deb": "9be0be3fcdc1492787588566002043028cd76f8c66f3a5ff969a591770655104",
+    "libsndfile1_1.2.2-4_amd64.deb": "678c7e95dea924d1ebe6c59879009dc3e7b61491bc32bd63bea200487d60a454",
+    "libsdl2-2.0-0_2.32.10+dfsg-6_amd64.deb": "816b2032649d7ba2b74c666a5a1e03ff8c41fc8b1be46db5dab45834a5233f8f",
+    "libogg0_1.3.6-2_amd64.deb": "9d62d5e64a55ecfc17a7aeb00a5ca5fdf095bd68c1c397146c81867bec35c31f",
+    "libmp3lame0_3.101~svn6525+dfsg-2ubuntu0.1_amd64.deb": "bc765461943344b160f208572c296360011a9aa14ca886fac5865dac4ba8730c",
+    "libsdl2-classic_2.32.10+dfsg-6_amd64.deb": "207811ceab6ab784e6dd86de05ecea82c0860b99768c6526f0dc9937d9321a81",
+    "libvorbis0a_1.3.7-3build2_amd64.deb": "e8577fd985c3a2bc61212be338207cc2a95e7d6892acaeccb3d455da13e4a480",
+    "libmpg123-0t64_1.33.3-2_amd64.deb": "5bb06d8890eecd357da520a21e592a93267bb4b48a4f8946d6d67c366f511bbd",
+    "libpulse0_1%3a17.0+dfsg1-2ubuntu4_amd64.deb": "d2998fcca587cb21447302a551bfaa6caa7052e7f00a1b041adf4237dd65e4a3",
+    "libasound2t64_1.2.15.3-1ubuntu1.1_amd64.deb": "96e20cf5c9095ef54ba46fccffea5c01cf2de17a1012c5683a67e43504a6d726"
+  },
+  "music": {
+    "renderer": "TinySoundFont",
+    "commit": "853a0a171759f1ddba0de1442133a75912bbeffa",
+    "bank": "TimGM6mb.sf2",
+    "bank_sha256": "c5378b62028c920cb11e4803327983fee2f2cdff5dc89c708e39da417e51c854",
+    "bank_license": "GPL-2, Tim Brechbill and David Bolton",
+    "purpose": "Local noncommercial synthesis of supplied shareware sequences"
+  }
+}

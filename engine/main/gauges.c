@@ -2467,7 +2467,9 @@ void draw_hud()
 		if (PlayerCfg.CockpitMode[1]!=CM_STATUS_BAR)
 			hud_show_lives();
 		if (Game_mode&GM_MULTI && Show_kill_list)
+#ifdef NETWORK
 			hud_show_kill_list();
+#endif
 		if (PlayerCfg.CockpitMode[1] != CM_LETTERBOX)
 			show_reticle(PlayerCfg.ReticleType, 1);
 		if (PlayerCfg.CockpitMode[1] != CM_LETTERBOX && Newdemo_state != ND_STATE_PLAYBACK && PlayerCfg.MouseFlightSim && PlayerCfg.MouseFSIndicator)

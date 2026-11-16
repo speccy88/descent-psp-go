@@ -37,7 +37,13 @@ void arch_init(void)
 {
 	int t;
 
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(
+#ifdef PSP_PORT
+0
+#else
+SDL_INIT_VIDEO
+#endif
+) < 0)
 		Error("SDL library initialisation failed: %s.",SDL_GetError());
 
 	key_init();

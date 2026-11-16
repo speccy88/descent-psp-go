@@ -1,0 +1,1622 @@
+[
+  {
+    "path": "d1x-rebirth_v0.58.1-src",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/d1x-Info.plist",
+    "size": 793
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/D1X.make",
+    "size": 14028
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/COPYING.txt",
+    "size": 2020
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/CHANGELOG.txt",
+    "size": 262283
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/vecmat.h",
+    "size": 12659
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/3d.h",
+    "size": 9302
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/makesig.h",
+    "size": 496
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/pstypes.h",
+    "size": 2194
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/loadgl.h",
+    "size": 95763
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/editor.h",
+    "size": 24275
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/objpage.h",
+    "size": 1092
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/kfuncs.h",
+    "size": 846
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/eswitch.h",
+    "size": 1136
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/esegment.h",
+    "size": 3652
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/medlisp.h",
+    "size": 1048
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/medmisc.h",
+    "size": 1331
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/texpage.h",
+    "size": 1095
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/ehostage.h",
+    "size": 902
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/meddraw.h",
+    "size": 1271
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/eobject.h",
+    "size": 1109
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/seguvs.h",
+    "size": 985
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/medwall.h",
+    "size": 1828
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/kdefs.h",
+    "size": 7959
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/info.h",
+    "size": 889
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/medrobot.h",
+    "size": 953
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/medsel.h",
+    "size": 919
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/macro.h",
+    "size": 842
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/editor/centers.h",
+    "size": 1012
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/timer.h",
+    "size": 961
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/palette.h",
+    "size": 1249
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/ignorecase.h",
+    "size": 3392
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/gr.h",
+    "size": 16242
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/args.h",
+    "size": 2287
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/fix.h",
+    "size": 49
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/func.h",
+    "size": 1728
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/texmap.h",
+    "size": 6888
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/maths.h",
+    "size": 3059
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/pcx.h",
+    "size": 2610
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/ogl_init.h",
+    "size": 3126
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/grdef.h",
+    "size": 3888
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/hmp.h",
+    "size": 1982
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/strio.h",
+    "size": 169
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/dl_list.h",
+    "size": 629
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/dxxerror.h",
+    "size": 1945
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/strutil.h",
+    "size": 1830
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/byteswap.h",
+    "size": 3806
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/internal.h",
+    "size": 2607
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/rle.h",
+    "size": 1535
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/u_mem.h",
+    "size": 2248
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/iff.h",
+    "size": 4770
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/console.h",
+    "size": 727
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/rbaudio.h",
+    "size": 2202
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/physfsx.h",
+    "size": 7345
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/include/ui.h",
+    "size": 12193
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/d1x-rebirth.desktop",
+    "size": 228
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/English.lproj",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/English.lproj/InfoPlist.strings",
+    "size": 548
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/README.RPi",
+    "size": 3088
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/3d",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/3d/globvars.c",
+    "size": 2038
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/3d/clipper.h",
+    "size": 1516
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/3d/setup.c",
+    "size": 1993
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/3d/draw.c",
+    "size": 8068
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/3d/matrix.c",
+    "size": 2013
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/3d/instance.c",
+    "size": 2397
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/3d/clipper.c",
+    "size": 5243
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/3d/interp.c",
+    "size": 16232
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/3d/rod.c",
+    "size": 5257
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/3d/points.c",
+    "size": 4428
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/3d/globvars.h",
+    "size": 1954
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/INSTALL.txt",
+    "size": 6580
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/SConstruct",
+    "size": 21851
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/meddraw.c",
+    "size": 24421
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/ehostage.c",
+    "size": 12375
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/kgame.c",
+    "size": 4150
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/func.c",
+    "size": 2088
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/mine.c",
+    "size": 13054
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/texpage.c",
+    "size": 7406
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/medsel.c",
+    "size": 3042
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/kview.c",
+    "size": 1967
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/ksegsel.c",
+    "size": 5287
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/kfuncs.c",
+    "size": 18249
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/eglobal.c",
+    "size": 3724
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/kcurve.c",
+    "size": 3175
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/objpage.c",
+    "size": 11039
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/ksegmove.c",
+    "size": 2067
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/group.c",
+    "size": 58133
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/curves.c",
+    "size": 17293
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/elight.c",
+    "size": 9008
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/kmine.c",
+    "size": 6292
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/medrobot.c",
+    "size": 25206
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/ktmap.c",
+    "size": 4991
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/khelp.c",
+    "size": 5921
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/med.c",
+    "size": 37803
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/pc6x8.fnt",
+    "size": 2084
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/group.pad",
+    "size": 1225
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/med.mnu",
+    "size": 8994
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/dummy.pad",
+    "size": 21
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/test.pad",
+    "size": 899
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/pc8x16.fnt",
+    "size": 4132
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/texture.pad",
+    "size": 1590
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/objmov.pad",
+    "size": 1546
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/lighting.pad",
+    "size": 1495
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/curve.pad",
+    "size": 1063
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/segmove.pad",
+    "size": 1066
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/object.pad",
+    "size": 1280
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/newobj.pad",
+    "size": 1540
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/data/segsize.pad",
+    "size": 1935
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/eswitch.c",
+    "size": 15113
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/autosave.c",
+    "size": 4332
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/medwall.c",
+    "size": 37176
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/texture.c",
+    "size": 9292
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/info.c",
+    "size": 11076
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/segment.c",
+    "size": 61014
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/eobject.c",
+    "size": 24931
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/fixseg.c",
+    "size": 6358
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/ksegsize.c",
+    "size": 11331
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/kbuild.c",
+    "size": 6451
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/seguvs.c",
+    "size": 49992
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/centers.c",
+    "size": 6832
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/editor/medmisc.c",
+    "size": 13610
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/.gitignore",
+    "size": 583
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/d1x-rebirth.xpm",
+    "size": 162436
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/d1xgl-Info.plist",
+    "size": 795
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/scroll.c",
+    "size": 7998
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/ui.c",
+    "size": 1755
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/file.c",
+    "size": 8868
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/radio.c",
+    "size": 4408
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/keytrap.c",
+    "size": 1515
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/message.c",
+    "size": 4864
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/keypress.c",
+    "size": 4269
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/dialog.c",
+    "size": 12388
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/menubar.c",
+    "size": 17901
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/icon.c",
+    "size": 4212
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/uidraw.c",
+    "size": 2822
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/popup.c",
+    "size": 3586
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/button.c",
+    "size": 4960
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/userbox.c",
+    "size": 3740
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/menu.c",
+    "size": 2996
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/inputbox.c",
+    "size": 4716
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/checkbox.c",
+    "size": 3981
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/keypad.c",
+    "size": 16750
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/listbox.c",
+    "size": 10887
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/ui/gadget.c",
+    "size": 8828
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/switch.c",
+    "size": 8292
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/ai.h",
+    "size": 4348
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/collide.c",
+    "size": 56389
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/fvi.c",
+    "size": 37739
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gamemine.h",
+    "size": 4813
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/texmerge.h",
+    "size": 1007
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/effects.c",
+    "size": 5737
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gamecntl.c",
+    "size": 33930
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/hostage.c",
+    "size": 4207
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/custom.h",
+    "size": 369
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/paging.h",
+    "size": 1475
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/game.c",
+    "size": 36813
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/player.c",
+    "size": 1874
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/bm.h",
+    "size": 2902
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gameseq.h",
+    "size": 3457
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gamesave.h",
+    "size": 1437
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/powerup.h",
+    "size": 3300
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/physics.c",
+    "size": 25917
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/mglobal.c",
+    "size": 3143
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/snddecom.c",
+    "size": 2842
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/render.c",
+    "size": 51825
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/cntrlcen.h",
+    "size": 2782
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/songs.c",
+    "size": 14288
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/newmenu.c",
+    "size": 59206
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/automap.c",
+    "size": 32425
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gauges.c",
+    "size": 76875
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/game.h",
+    "size": 6692
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/controls.c",
+    "size": 3627
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/digi.h",
+    "size": 4175
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/dumpmine.c",
+    "size": 29754
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/slew.c",
+    "size": 4802
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/laser.c",
+    "size": 50073
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/vers_id.h",
+    "size": 585
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/piggy.h",
+    "size": 3577
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/hud.c",
+    "size": 5959
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/fuelcen.h",
+    "size": 5564
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/paging.c",
+    "size": 8273
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/console.c",
+    "size": 6183
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/titles.c",
+    "size": 31502
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/object.h",
+    "size": 20991
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/snddecom.h",
+    "size": 124
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/terrain.h",
+    "size": 966
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/scores.h",
+    "size": 3337
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gamefont.c",
+    "size": 4777
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/morph.h",
+    "size": 1769
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/mission.c",
+    "size": 20886
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/collide.h",
+    "size": 2323
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/controls.h",
+    "size": 1817
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gameseq.c",
+    "size": 34482
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/mission.h",
+    "size": 4201
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/newdemo.h",
+    "size": 4833
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/state.c",
+    "size": 54606
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/inferno.h",
+    "size": 1619
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/newdemo.c",
+    "size": 94776
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/morph.c",
+    "size": 9331
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/player.h",
+    "size": 8696
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/switch.h",
+    "size": 3289
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/credits.c",
+    "size": 5887
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/lighting.c",
+    "size": 17988
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/texmerge.c",
+    "size": 8285
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/scores.c",
+    "size": 11865
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/config.c",
+    "size": 11355
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/hudmsg.h",
+    "size": 874
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/endlevel.h",
+    "size": 1466
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/weapon.c",
+    "size": 20400
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/text.c",
+    "size": 9276
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/bm.c",
+    "size": 7736
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/text.h",
+    "size": 46264
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/powerup.c",
+    "size": 14241
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gamerend.c",
+    "size": 13031
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/object.c",
+    "size": 61008
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/vers_id.c",
+    "size": 240
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/kconfig.c",
+    "size": 68617
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/endlevel.c",
+    "size": 38073
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/slew.h",
+    "size": 2284
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/wall.h",
+    "size": 10033
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/piggy.c",
+    "size": 27012
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/robot.c",
+    "size": 7657
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/polyobj.h",
+    "size": 4536
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/multibot.c",
+    "size": 31396
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/state.h",
+    "size": 1462
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/net_udp.h",
+    "size": 6618
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/render.h",
+    "size": 3296
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/digicomp.h",
+    "size": 1463
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/physics.h",
+    "size": 2168
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/segment.h",
+    "size": 7259
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/hash.h",
+    "size": 1781
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/textures.h",
+    "size": 1006
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/menu.c",
+    "size": 66537
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/robot.h",
+    "size": 5577
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/playsave.c",
+    "size": 36826
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/laser.h",
+    "size": 4878
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/multi.c",
+    "size": 110535
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/weapon.h",
+    "size": 7537
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gameseg.c",
+    "size": 54226
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/cntrlcen.c",
+    "size": 14860
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/bmread.c",
+    "size": 54026
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/kmatrix.h",
+    "size": 845
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gamefont.h",
+    "size": 2079
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gamemine.c",
+    "size": 19884
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/kmatrix.c",
+    "size": 9316
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/sounds.h",
+    "size": 8939
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/hostage.h",
+    "size": 4546
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gauges.h",
+    "size": 2592
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/aistruct.h",
+    "size": 10205
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/vclip.h",
+    "size": 1930
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/fireball.c",
+    "size": 37630
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/wall.c",
+    "size": 31926
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/titles.h",
+    "size": 1050
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/aipath.c",
+    "size": 42242
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/fvi.h",
+    "size": 5086
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/config.h",
+    "size": 1715
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/playsave.h",
+    "size": 3364
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/ai.c",
+    "size": 115788
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/custom.c",
+    "size": 14791
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/fireball.h",
+    "size": 3961
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/credits.h",
+    "size": 875
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/fuelcen.c",
+    "size": 20448
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/multi.h",
+    "size": 14690
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/terrain.c",
+    "size": 10998
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/kconfig.h",
+    "size": 3028
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/lighting.h",
+    "size": 1831
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/digicomp.c",
+    "size": 2994
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/net_udp.c",
+    "size": 149194
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/songs.h",
+    "size": 1140
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/polyobj.c",
+    "size": 20034
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/automap.h",
+    "size": 976
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/screens.h",
+    "size": 3988
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/menu.h",
+    "size": 1349
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gamesave.c",
+    "size": 40334
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/vclip.c",
+    "size": 2415
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/multibot.h",
+    "size": 2250
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/digiobj.c",
+    "size": 23191
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/inferno.c",
+    "size": 13703
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/effects.h",
+    "size": 2605
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/segpoint.h",
+    "size": 1555
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/gameseg.h",
+    "size": 9444
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/main/newmenu.h",
+    "size": 7909
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/maths",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/maths/tables.c",
+    "size": 15781
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/maths/fixc.c",
+    "size": 6945
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/maths/vecmat.c",
+    "size": 21450
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/maths/rand.c",
+    "size": 442
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/bitmap.h",
+    "size": 199
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/scalec.c",
+    "size": 11255
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/box.c",
+    "size": 2827
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/rle.c",
+    "size": 14612
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/rect.c",
+    "size": 1319
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/pcx.c",
+    "size": 10363
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/line.c",
+    "size": 6652
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/clip.h",
+    "size": 7672
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/font.c",
+    "size": 30044
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/palette.c",
+    "size": 5343
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/canvas.c",
+    "size": 3418
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/pixel.c",
+    "size": 1631
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/bitmap.c",
+    "size": 6451
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/2dsline.c",
+    "size": 2276
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/disc.c",
+    "size": 800
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/poly.c",
+    "size": 6769
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/gpixel.c",
+    "size": 1258
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/circle.c",
+    "size": 2911
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/2d/bitblt.c",
+    "size": 16802
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/README.txt",
+    "size": 3601
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/d1x-rebirth.bmp",
+    "size": 2102
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/include",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/include/window.h",
+    "size": 1429
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/include/joy.h",
+    "size": 887
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/include/digi_mixer_music.h",
+    "size": 386
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/include/digi_mixer.h",
+    "size": 605
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/include/digi_audio.h",
+    "size": 550
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/include/jukebox.h",
+    "size": 281
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/include/messagebox.h",
+    "size": 337
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/include/mouse.h",
+    "size": 1180
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/include/key.h",
+    "size": 5434
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/include/event.h",
+    "size": 1719
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/cocoa",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/cocoa/SDLMain.h",
+    "size": 307
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/cocoa/d1x-rebirth.icns",
+    "size": 64608
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/cocoa/SDLMain.m",
+    "size": 11197
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/cocoa/tool_bundle.py",
+    "size": 8530
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/win32",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/win32/include",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/win32/include/resource.h",
+    "size": 490
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/win32/d1x-rebirth.ico",
+    "size": 59582
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/win32/messagebox.c",
+    "size": 968
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/win32/d1x-rebirth.rc",
+    "size": 1548
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/carbon",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/carbon/descent.r",
+    "size": 4520
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/carbon/messagebox.c",
+    "size": 2243
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/carbon/SDL_main.c",
+    "size": 15524
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/carbon/conf.h",
+    "size": 1689
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/window.c",
+    "size": 4992
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/rbaudio.c",
+    "size": 6213
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/mouse.c",
+    "size": 6182
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/digi_audio.c",
+    "size": 11403
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/key.c",
+    "size": 17195
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/timer.c",
+    "size": 1148
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/digi_mixer_music.c",
+    "size": 3819
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/joy.c",
+    "size": 8393
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/gr.c",
+    "size": 7081
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/event.c",
+    "size": 4422
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/digi_mixer.c",
+    "size": 5646
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/jukebox.c",
+    "size": 8322
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/init.c",
+    "size": 902
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/sdl/digi.c",
+    "size": 5300
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/ogl",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/ogl/gr.c",
+    "size": 31496
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/arch/ogl/ogl.c",
+    "size": 52705
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/misc",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/misc/ignorecase.c",
+    "size": 5845
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/misc/error.c",
+    "size": 2471
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/misc/strutil.c",
+    "size": 6565
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/misc/dl_list.c",
+    "size": 1444
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/misc/physfsx.c",
+    "size": 14149
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/misc/hash.c",
+    "size": 2621
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/misc/hmp.c",
+    "size": 19161
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/misc/args.c",
+    "size": 6469
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/misc/strio.c",
+    "size": 1043
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/d1x.ini",
+    "size": 3122
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/utilities",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/utilities/extractD1Data.cpp",
+    "size": 5132
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/utilities/SConstruct",
+    "size": 1691
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/iff",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/iff/iff.c",
+    "size": 24693
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap/tmap_lin.asm",
+    "size": 8039
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap/tmap_per.asm",
+    "size": 32373
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap/texmapl.h",
+    "size": 5101
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap/ntmap.c",
+    "size": 29980
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap/tmapppc.a",
+    "size": 31780
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap/tmap_ll.asm",
+    "size": 12750
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap/tmapfade.asm",
+    "size": 3996
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap/tmapflat.c",
+    "size": 6741
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap/scanline.c",
+    "size": 29406
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap/scanline.h",
+    "size": 2093
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap/tmap_inc.asm",
+    "size": 5153
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/texmap/tmap_flt.asm",
+    "size": 4263
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/d1x-rebirth.xcodeproj",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/d1x-rebirth.xcodeproj/project.pbxproj",
+    "size": 191843
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/RELEASE-NOTES.txt",
+    "size": 1711
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/mem",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/mem/mem.c",
+    "size": 10586
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/debian",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/debian/changelog",
+    "size": 275
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/debian/postinst",
+    "size": 13
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/debian/rules",
+    "size": 2155
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/debian/control",
+    "size": 625
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/debian/copyright",
+    "size": 350
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/debian/patches",
+    "size": 0
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/debian/patches/00games_as_bindir.diff",
+    "size": 350
+  },
+  {
+    "path": "d1x-rebirth_v0.58.1-src/debian/prerm",
+    "size": 13
+  }
+]

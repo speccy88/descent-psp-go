@@ -1,0 +1,97 @@
+[
+  {
+    "path": "desc14sw",
+    "size": 0,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/4gwbind.exe",
+    "size": 45551,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/4gwpro.exe",
+    "size": 242724,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/descent.b50",
+    "size": 1563,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/descent.bat",
+    "size": 163,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/descent.hog",
+    "size": 2339773,
+    "extracted": true
+  },
+  {
+    "path": "desc14sw/descent.m50",
+    "size": 1006,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/descent.phx",
+    "size": 2079,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/descent.pig",
+    "size": 5092871,
+    "extracted": true
+  },
+  {
+    "path": "desc14sw/descent.ubn",
+    "size": 835841,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/descent2.adv",
+    "size": 1347,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/descentg.ini",
+    "size": 2824,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/hmidet.386",
+    "size": 17134,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/hmidrv.386",
+    "size": 116455,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/hmimdrv.386",
+    "size": 111876,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/orderfrm.txt",
+    "size": 2077,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/readme.txt",
+    "size": 53079,
+    "extracted": true
+  },
+  {
+    "path": "desc14sw/refcard.txt",
+    "size": 2991,
+    "extracted": false
+  },
+  {
+    "path": "desc14sw/setup.ubn",
+    "size": 223761,
+    "extracted": false
+  }
+]

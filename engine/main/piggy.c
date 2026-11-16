@@ -389,12 +389,15 @@ int properties_init()
 	N_bitmaps = PHYSFSX_readInt(Piggy_fp);
 	size -= sizeof(int);
 	N_sounds = PHYSFSX_readInt(Piggy_fp);
+ if(N_bitmaps<1||N_bitmaps>=MAX_BITMAP_FILES||N_sounds<0||N_sounds>=MAX_SOUND_FILES||
+ (int64_t)Pigdata_start+8+(int64_t)N_bitmaps*sizeof(DiskBitmapHeader)+(int64_t)N_sounds*sizeof(DiskSoundHeader)>pigsize)Error("Invalid PIG resource directory");
 	size -= sizeof(int);
 
 	header_size = (N_bitmaps*sizeof(DiskBitmapHeader)) + (N_sounds*sizeof(DiskSoundHeader));
 
 	for (i=0; i<N_bitmaps; i++ ) {
 		DiskBitmapHeader_read(&bmh, Piggy_fp);
+ if(bmh.offset<0||(int64_t)bmh.offset+header_size+8+Pigdata_start>=pigsize)Error("Invalid bitmap offset");
 		
 		GameBitmapFlags[i+1] = 0;
 		if ( bmh.flags & BM_FLAG_TRANSPARENT ) GameBitmapFlags[i+1] |= BM_FLAG_TRANSPARENT;
@@ -437,6 +440,7 @@ int properties_init()
 
 	for (i=0; !MacPig && i<N_sounds; i++ ) {
 		DiskSoundHeader_read(&sndh, Piggy_fp);
+ if(sndh.offset<0||sndh.length<0||sndh.data_length<0||(int64_t)sndh.offset+sndh.data_length+header_size+8+Pigdata_start>pigsize)Error("Invalid sound offset");
 		
 		//size -= sizeof(DiskSoundHeader);
 #ifdef ALLEGRO

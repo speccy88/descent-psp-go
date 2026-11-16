@@ -1,0 +1,9 @@
+test_all_hmp (test_assets.Assets.test_all_hmp) ... ok
+test_hmi_delta (test_assets.Assets.test_hmi_delta) ... ok
+test_hog_directory (test_assets.Assets.test_hog_directory) ... ok
+test_pig_edition (test_assets.Assets.test_pig_edition) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.214s
+
+OK

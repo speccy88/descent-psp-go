@@ -38,7 +38,20 @@ void PHYSFSX_init(int argc, char *argv[])
 #endif
 	
 	PHYSFS_init(argv[0]);
-	PHYSFS_permitSymbolicLinks(1);
+#ifdef PSP_PORT
+ PHYSFS_permitSymbolicLinks(0);
+ char root[1024],user[1100],data[1100],music[1100];
+ snprintf(root,sizeof(root),"%s",PHYSFS_getBaseDir());
+ snprintf(user,sizeof(user),"%suserdata",root);
+ snprintf(data,sizeof(data),"%sdata",root);
+ snprintf(music,sizeof(music),"%smusic",root);
+ if(!PHYSFS_setWriteDir(user)) Error("Cannot open userdata directory");
+ PHYSFS_addToSearchPath(user,1); PHYSFS_addToSearchPath(data,1); PHYSFS_addToSearchPath(music,1); PHYSFS_addToSearchPath(root,1);
+ InitArgs(argc,argv);
+ return;
+#else
+ PHYSFS_permitSymbolicLinks(1);
+#endif
 	
 #ifdef macintosh
 	strcpy(base_dir, PHYSFS_getBaseDir());
@@ -440,7 +453,7 @@ PHYSFS_file *PHYSFSX_openReadBuffered(const char *filename)
 PHYSFS_file *PHYSFSX_openWriteBuffered(const char *filename)
 {
 	PHYSFS_file *fp;
-	PHYSFS_uint64 bufSize = 1024*1024;	// hmm, seems like an OK size.
+	PHYSFS_uint64 bufSize = 16*1024;	// hmm, seems like an OK size.
 	
 	fp = PHYSFS_openWrite(filename);
 	if (!fp)

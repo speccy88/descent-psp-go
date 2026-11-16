@@ -868,6 +868,11 @@ int newmenu_key_command(window *wind, d_event *event, newmenu *menu)
 {
 	newmenu_item *item = &menu->items[menu->citem];
 	int k = event_key_get(event);
+#ifdef PSP_PORT
+ if(k==KEY_F4 && menu->citem>=0 && (item->type==NM_TYPE_INPUT || item->type==NM_TYPE_INPUT_MENU)){
+  extern void psp_text_entry(char*,int); psp_text_entry(item->text,item->text_len);item->value=strlen(item->text);return 1;
+ }
+#endif
 	int old_choice, i;
 	char *Temp,TempVal;
 	int changed = 0;

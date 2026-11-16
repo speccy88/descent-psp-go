@@ -1,0 +1,18 @@
+clock rc=0 CPU=333 BUS=166 kernel_free=2819072 heap_free=41942408 (40MiB reserved; target >=4MiB free)
+input_probe=0x94dda40
+
+Type umd0:/EBOOT.PBP -help' for a list of command-line options.
+
+D1X-Rebirth v0.58.1  Nov 15 2026 19:03:12
+This is a MODIFIED version of Descent, based on Registered v1.5 Jan 5, 1996.
+Copyright (c) 1994 Parallax Software Corporation
+DESCENT is a trademark of Interplay Productions, Inc.
+Copyright (C) 2005-2011 Christian Beckhaeuser
+
+Using SDL_mixer library
+Music stream: music/descent.wav bytes=40382208
+Music stream: music/briefing.wav bytes=31213824
+Music stream: music/game0.wav bytes=35832832
+Music stream: music/descent.wav bytes=40382208
+Music blocks=4712 starvation=0 ring_frames=0
+Telemetry frames=5575 missed=122 heap_used=869288 estimated_reserved_free=41073752 EDRAM=2097152

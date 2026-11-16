@@ -11,9 +11,19 @@
 #include "config.h"
 
 static fix64 F64_RunTime = 0;
+#ifdef PSP_PORT
+#include <pspkernel.h>
+static uint64_t previous_us;
+void psp_timer_reset(void){previous_us=sceKernelGetSystemTimeWide();}
+#endif
 
 void timer_update(void)
 {
+#ifdef PSP_PORT
+ uint64_t now=sceKernelGetSystemTimeWide();
+ if(previous_us)F64_RunTime+=(now-previous_us)*65536/1000000;
+ previous_us=now;
+#else
 	static ubyte init = 1;
 	static fix64 last_tv = 0;
 	fix64 cur_tv = SDL_GetTicks()*F1_0/1000;
@@ -27,6 +37,7 @@ void timer_update(void)
 	if (last_tv < cur_tv) // in case SDL_GetTicks wraps, don't update and have a little hickup
 		F64_RunTime += (cur_tv - last_tv); // increment! this value will overflow long after we are all dead... so why bother checking?
 	last_tv = cur_tv;
+#endif
 }
 
 fix64 timer_query(void)
@@ -42,6 +53,9 @@ void timer_delay(fix seconds)
 // Replacement for timer_delay which considers calc time the program needs between frames (not reentrant)
 void timer_delay2(int fps)
 {
+#ifdef PSP_PORT
+ (void)fps;return; /* GU presenter is the sole frame scheduler. */
+#endif
 	static u_int32_t FrameStart=0;
 	u_int32_t FrameLoop=0;
 

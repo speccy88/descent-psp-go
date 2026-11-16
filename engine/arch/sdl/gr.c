@@ -23,6 +23,11 @@ int sdl_video_flags = SDL_SWSURFACE | SDL_HWPALETTE | SDL_DOUBLEBUF;
 SDL_Surface *screen,*canvas;
 int gr_installed = 0;
 
+#ifdef PSP_PORT
+extern void psp_present(SDL_Surface*);
+extern void psp_present_close(void);
+void gr_flip(void){if(canvas)psp_present(canvas);}
+#else
 void gr_flip()
 {
 	SDL_Rect src, dest;
@@ -35,6 +40,7 @@ void gr_flip()
 	SDL_Flip(screen);
 }
 
+#endif
 // Set the buffer to draw to. 0 is front, 1 is back
 // With SDL, can't use it without resetting the video mode
 void gr_set_draw_buffer(int buf)
@@ -96,6 +102,7 @@ int gr_set_mode(u_int32_t mode)
 
 	w=SM_W(mode);
 	h=SM_H(mode);
+#ifndef PSP_PORT
 	screen=NULL;
 
 	SDL_WM_SetCaption(DESCENT_VERSION, "Descent");
@@ -120,6 +127,10 @@ int gr_set_mode(u_int32_t mode)
 		exit(1);
 	}
 
+#else
+ w=320;h=200;mode=SM(320,200);
+ if(canvas) SDL_FreeSurface(canvas);
+#endif
 	canvas = SDL_CreateRGBSurface(sdl_video_flags, w, h, 8, 0, 0, 0, 0);
 	if (canvas == NULL)
 	{
@@ -151,7 +162,9 @@ int gr_check_fullscreen(void)
 int gr_toggle_fullscreen(void)
 {
 	sdl_video_flags^=SDL_FULLSCREEN;
+#ifndef PSP_PORT
 	SDL_WM_ToggleFullScreen(screen);
+#endif
 	GameCfg.WindowMode = (sdl_video_flags & SDL_FULLSCREEN)?0:1;
 	return (sdl_video_flags & SDL_FULLSCREEN)?1:0;
 }
@@ -168,7 +181,13 @@ int gr_init(int mode)
 	if (gr_installed==1)
 		return -1;
 
-	if (SDL_Init(SDL_INIT_VIDEO) < 0)
+	if (SDL_Init(
+#ifdef PSP_PORT
+0
+#else
+SDL_INIT_VIDEO
+#endif
+) < 0)
 	{
 		Error("SDL library video initialisation failed: %s.",SDL_GetError());
 	}
@@ -214,6 +233,9 @@ void gr_close()
 		d_free(grd_curscreen);
 		SDL_ShowCursor(1);
 		SDL_FreeSurface(canvas);
+#ifdef PSP_PORT
+ psp_present_close();
+#endif
 	}
 }
 

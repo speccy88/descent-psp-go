@@ -787,6 +787,10 @@ int state_save_old_game(int slotnum, char * sg_name, player_rw * sg_player,
 //	-----------------------------------------------------------------------------------
 int state_save_all(int blind_save)
 {
+#ifdef PSP_PORT
+ if(PHYSFSX_fsize("descent.hog")==D1_SHAREWARE_MISSION_HOGSIZE || PHYSFSX_fsize("descent.hog")==D1_SHAREWARE_10_MISSION_HOGSIZE){nm_messagebox("Shareware edition",1,"OK","In-level saves require\nregistered data.\nPilot progress is saved separately.");return 0;}
+#endif
+
 	int	rval;
 	char	filename[PATH_MAX], desc[DESC_LENGTH+1];
 
@@ -1074,6 +1078,10 @@ int state_save_all_sub(char *filename, char *desc)
 //	-----------------------------------------------------------------------------------
 int state_restore_all(int in_game)
 {
+#ifdef PSP_PORT
+ if(PHYSFSX_fsize("descent.hog")==D1_SHAREWARE_MISSION_HOGSIZE || PHYSFSX_fsize("descent.hog")==D1_SHAREWARE_10_MISSION_HOGSIZE){nm_messagebox("Shareware edition",1,"OK","In-level saves require\nregistered data.\nPilot progress is saved separately.");return 0;}
+#endif
+
 	char filename[PATH_MAX];
 
 	if ( Newdemo_state == ND_STATE_RECORDING )

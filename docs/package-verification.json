@@ -1,0 +1,18 @@
+{
+  "sfo": {
+    "MEMSIZE": 1,
+    "EFAWARE": 1,
+    "APP_VER": "00.01",
+    "BOOTABLE": 1,
+    "CATEGORY": "MG",
+    "DISC_ID": "UCJS10041",
+    "DISC_VERSION": "1.00",
+    "PARENTAL_LEVEL": 1,
+    "PSP_SYSTEM_VER": "1.00",
+    "REGION": 32768,
+    "TITLE": "Descent PSP Go"
+  },
+  "files_verified": 28,
+  "edition": "Descent 1 PC shareware 1.4",
+  "version": "0.1.0-candidate"
+}

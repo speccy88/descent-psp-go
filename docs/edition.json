@@ -1,0 +1,220 @@
+{
+  "edition": "Descent 1 PC shareware 1.4",
+  "levels": 7,
+  "source": "https://icculus.org/d2x/data/desc14sw.tar.gz",
+  "pig": {
+    "bitmaps": 1152,
+    "sounds": 70,
+    "header_bytes": 20992
+  },
+  "files": {
+    "descent.hog": {
+      "bytes": 2339773,
+      "sha256": "26d1e31e7709dfe6dddf17ccd37f5c82e866dce49a0faf07e90ba3213b288eab"
+    },
+    "descent.pig": {
+      "bytes": 5092871,
+      "sha256": "b67865e513452a35887a20270d17fdfb5af1a2edaaae247bc523489f1d84f9ac"
+    }
+  },
+  "hog_entries": [
+    "bitmaps.bin",
+    "descent.txb",
+    "briefing.txb",
+    "credits.txb",
+    "ending.txb",
+    "level01.txb",
+    "level02.txb",
+    "level03.txb",
+    "level04.txb",
+    "level05.txb",
+    "level06.txb",
+    "level07.txb",
+    "lev01ter.bbm",
+    "earth.bbm",
+    "moon01.bbm",
+    "moon02.bbm",
+    "moon03.bbm",
+    "sun.bbm",
+    "endguy.bbm",
+    "credits.256",
+    "palette.256",
+    "font1-1.fnt",
+    "font2-1.fnt",
+    "font2-2.fnt",
+    "font2-3.fnt",
+    "font3-1.fnt",
+    "iplogo1.pcx",
+    "logo.pcx",
+    "descent.pcx",
+    "menu.pcx",
+    "merc01.pcx",
+    "venus01.pcx",
+    "moon01.pcx",
+    "end01.pcx",
+    "order01.pcx",
+    "scores.pcx",
+    "map.pcx",
+    "brief01.pcx",
+    "brief02.pcx",
+    "brief03.pcx",
+    "stars.pcx",
+    "statback.pcx",
+    "digitest.raw",
+    "briefing.hmp",
+    "credits.hmp",
+    "descent.hmp",
+    "game0.hmp",
+    "game1.hmp",
+    "game2.hmp",
+    "game3.hmp",
+    "game4.hmp",
+    "melodic.bnk",
+    "drum.bnk",
+    "drum32.dig",
+    "level01.sdl",
+    "level02.sdl",
+    "level03.sdl",
+    "level04.sdl",
+    "level05.sdl",
+    "level06.sdl",
+    "level07.sdl",
+    "robot09.pof",
+    "robot09s.pof",
+    "robot17.pof",
+    "robot17s.pof",
+    "robot22.pof",
+    "robot22s.pof",
+    "robot01.pof",
+    "robot01s.pof",
+    "robot32.pof",
+    "robot32s.pof",
+    "robot23.pof",
+    "robot23s.pof",
+    "robot35.pof",
+    "robot35s.pof",
+    "robot37.pof",
+    "robot37s.pof",
+    "robot38.pof",
+    "robot38s.pof",
+    "boss01.pof",
+    "pship1.pof",
+    "pship1s.pof",
+    "pship1b.pof",
+    "reactor.pof",
+    "reactor2.pof",
+    "exit01.pof",
+    "exit01d.pof",
+    "laser1-1.pof",
+    "laser1-2.pof",
+    "laser2-1.pof",
+    "laser2-2.pof",
+    "laser3-1.pof",
+    "laser3-2.pof",
+    "laser4-1.pof",
+    "laser4-2.pof",
+    "laser11s.pof",
+    "laser12s.pof",
+    "laser21s.pof",
+    "laser22s.pof",
+    "laser31s.pof",
+    "laser32s.pof",
+    "laser41s.pof",
+    "laser42s.pof",
+    "cmissile.pof",
+    "flare.pof",
+    "smissile.pof"
+  ],
+  "songs": [
+    {
+      "id": 0,
+      "source": "descent.hmp",
+      "pcm": "descent.wav",
+      "loop": {
+        "start_frame": 0,
+        "end_frame": null
+      },
+      "hmp_sha256": "2b6f41b75d1114c1d69a8aff1a6e14da82b7cc1145c2251d905312acc69de512"
+    },
+    {
+      "id": 1,
+      "source": "briefing.hmp",
+      "pcm": "briefing.wav",
+      "loop": {
+        "start_frame": 0,
+        "end_frame": null
+      },
+      "hmp_sha256": "761a75796fb87801adec5013285bc5fee6479286a3c7e92d8c006da116de533e"
+    },
+    {
+      "id": 2,
+      "source": "credits.hmp",
+      "pcm": "credits.wav",
+      "loop": {
+        "start_frame": 0,
+        "end_frame": null
+      },
+      "hmp_sha256": "13f7fe6d92a46440c5811ed5cd0bdab68e97f4cad0fba7f4fc106d4237130ea1"
+    },
+    {
+      "id": 3,
+      "source": "endlevel.hmp",
+      "status": "not supplied by original shareware; original fallback behavior retained"
+    },
+    {
+      "id": 4,
+      "source": "endgame.hmp",
+      "status": "not supplied by original shareware; original fallback behavior retained"
+    },
+    {
+      "id": 5,
+      "source": "game0.hmp",
+      "pcm": "game0.wav",
+      "loop": {
+        "start_frame": 0,
+        "end_frame": null
+      },
+      "hmp_sha256": "bcd18dc9c822d81550f9d75d18e09b5e616ebfc90f2e710b0b41fa5c5b28c544"
+    },
+    {
+      "id": 6,
+      "source": "game1.hmp",
+      "pcm": "game1.wav",
+      "loop": {
+        "start_frame": 0,
+        "end_frame": null
+      },
+      "hmp_sha256": "1e6bb7bf95d8248b16ddeceb6e1f26b66ebaf24e30d3cc1f915a1e8327fc4655"
+    },
+    {
+      "id": 7,
+      "source": "game2.hmp",
+      "pcm": "game2.wav",
+      "loop": {
+        "start_frame": 4425,
+        "end_frame": 9348180
+      },
+      "hmp_sha256": "1a0673ab4768335c8804b60f5fddf9c3aa6fa942f8d66f1e8cdc9ef54a5597b6"
+    },
+    {
+      "id": 8,
+      "source": "game3.hmp",
+      "pcm": "game3.wav",
+      "loop": {
+        "start_frame": 0,
+        "end_frame": null
+      },
+      "hmp_sha256": "07fe9be11a8cb914aa87d131b2afd83883f023849df03e554f835230de19dadb"
+    },
+    {
+      "id": 9,
+      "source": "game4.hmp",
+      "pcm": "game4.wav",
+      "loop": {
+        "start_frame": 0,
+        "end_frame": null
+      },
+      "hmp_sha256": "4d79f76119f774c8166e92c475fa6de0bf6209fe59c153f7ec570c3826e77afa"
+    }
+  ]
+}
