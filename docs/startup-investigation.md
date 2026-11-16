@@ -120,3 +120,36 @@ free kernel memory and remaining stack. Its transition log was exercised through
 level one in PPSSPP. It is diagnostic instrumentation, not a confirmed fix for
 this second failure. An audio-disabled physical test (hold L during launch) is
 requested to narrow the next investigation. No new gameplay claim is made.
+
+## Pilot-selection failure and rc.3 correction
+
+The next physical run was launched holding L. Its boot log confirms audio was
+disabled, and the user reports a freeze when selecting the saved pilot. The
+PLR, PLX and configuration files were unchanged from the previous collected
+copies; the PLR has the expected version-8 header and one highest-level entry.
+
+The PLX reader passes addresses of packed `PlayerCfg.ReticleRGBA` integers to
+`sscanf`. The actual destination address is one byte off integer alignment. A
+probe at the C-library boundary reproduced this with the saved `retrgba=0,32,0,0`
+line. Ordinary caller-side alignment instrumentation did not catch the write
+inside the uninstrumented host C library. New Game also calls this reader when
+looking up the pilot's highest level, which makes it relevant to both reported
+failure points. A physical exception PC was not captured.
+
+The reader now parses into aligned local integers and copies the results back
+into the packed configuration. Existing partial/invalid-input behaviour and the
+pilot file format are preserved. `scripts/test-pilot-settings.sh` exercises the
+real PLX reader, wraps the library call to require aligned outputs, and checks
+valid, partial and invalid colour fields. It fails on the previous code and
+passes with the correction. The full host UI flow now selects the saved pilot,
+selects New Game, chooses difficulty, skips the briefing and reaches level one;
+the boundary probe confirms aligned outputs at each pilot reload.
+
+rc.3 EBOOT SHA-256:
+`1c7aba469ce518b041ecb806c4dab2a0c192969ef4f5f390ccdc51f44353b865`.
+The build retains the additional pilot, music and level transition checkpoints.
+The exact rc.3 EBOOT was also tested in PPSSPP with the copied hardware pilot: it
+loads the existing pilot, enters level one with music and exits cleanly through
+the menu. The public ZIP setup verifies 16 files after adding the shareware data.
+Relinking the debug archive reproduces the release PRX byte-for-byte.
+Physical validation of rc.3 is still required.

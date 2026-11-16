@@ -44,6 +44,7 @@ COPYRIGHT 1993-1998 PARALLAX SOFTWARE CORPORATION.  ALL RIGHTS RESERVED.
 #include "newdemo.h"
 #include "gauges.h"
 #include "args.h"
+#include "startup.h"
 
 //version 5  ->  6: added new highest level information
 //version 6  ->  7: stripped out the old saved_game array.
@@ -294,8 +295,14 @@ int read_player_d1x(char *filename)
 					PlayerCfg.HudMode = atoi(line);
 				else if(!strcmp(word,"RETTYPE"))
 					PlayerCfg.ReticleType = atoi(line);
-				else if(!strcmp(word,"RETRGBA"))
-					sscanf(line,"%i,%i,%i,%i",&PlayerCfg.ReticleRGBA[0],&PlayerCfg.ReticleRGBA[1],&PlayerCfg.ReticleRGBA[2],&PlayerCfg.ReticleRGBA[3]);
+				else if(!strcmp(word,"RETRGBA")) {
+					int rgba[4];
+					/* player_config is packed. scanf requires aligned int outputs. */
+					memcpy(rgba, PlayerCfg.ReticleRGBA, sizeof(rgba));
+					PSP_BOOT_CHECKPOINT("reading pilot reticle colours");
+					sscanf(line, "%i,%i,%i,%i", &rgba[0], &rgba[1], &rgba[2], &rgba[3]);
+					memcpy(PlayerCfg.ReticleRGBA, rgba, sizeof(rgba));
+				}
 				else if(!strcmp(word,"RETSIZE"))
 					PlayerCfg.ReticleSize = atoi(line);
 				d_free(word);
@@ -689,6 +696,7 @@ int write_player_d1x(char *filename)
 //read in the player's saved games.  returns errno (0 == no error)
 int read_player_file()
 {
+	PSP_BOOT_CHECKPOINT("opening pilot file");
 	char filename[PATH_MAX];
 	PHYSFS_file *file;
 	int player_file_size, shareware_file = -1, id = 0;
@@ -866,8 +874,11 @@ int read_player_file()
 
 	filename[strlen(filename) - 4] = 0;
 	strcat(filename, ".plx");
+	PSP_BOOT_CHECKPOINT("reading pilot text settings");
 	read_player_d1x(filename);
+	PSP_BOOT_CHECKPOINT("applying pilot controls");
 	kc_set_controls();
+	PSP_BOOT_CHECKPOINT("pilot settings loaded");
 
 	return EZERO;
 

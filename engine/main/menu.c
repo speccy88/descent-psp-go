@@ -293,16 +293,20 @@ int player_menu_handler( listbox *lb, d_event *event, char **list )
 			}
 			else
 			{
+				PSP_BOOT_CHECKPOINT("existing pilot selected");
 				strncpy(Players[Player_num].callsign,items[citem] + ((items[citem][0]=='$')?1:0), CALLSIGN_LEN);
 				d_strlwr(Players[Player_num].callsign);
 			}
 			break;
 
 		case EVENT_WINDOW_CLOSE:
+			PSP_BOOT_CHECKPOINT("loading selected pilot");
 			if (read_player_file() != EZERO)
 				return 1;		// abort close!
 
+			PSP_BOOT_CHECKPOINT("saving selected pilot name");
 			WriteConfigFile();		// Update lastplr
+			PSP_BOOT_CHECKPOINT("pilot selection complete");
 
 			PHYSFS_freeList(list);
 			d_free(items);

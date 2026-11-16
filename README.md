@@ -19,6 +19,7 @@ source scripts/desktop-env.sh
 bash scripts/build-desktop.sh
 bash scripts/test-host.sh
 bash scripts/test-alignment.sh
+bash scripts/test-pilot-settings.sh
 export PSPDEV=/absolute/path/to/pspdev
 bash scripts/build-psp.sh build/diagnostic ON
 bash scripts/build-psp.sh build/psp OFF

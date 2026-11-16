@@ -1,8 +1,8 @@
 # Install Descent PSP Go
 
-This prerelease runs the seven-level Descent 1 PC Shareware 1.4 campaign. It targets PSP Go with homebrew support enabled. The EBOOT was tested in PPSSPP. This candidate corrects startup memory use and alignment faults discovered after a physical PSP Go froze at the red title screen. Physical gameplay with this correction still needs confirmation. See [ARK-4’s homebrew documentation](https://github.com/PSP-Archive/ARK-4/wiki/Homebrew-Support/d97f824abbab504f6da37d591fd159fdcac4f1ba) for an example of how unsigned PSP homebrew is launched.
+This prerelease runs the seven-level Descent 1 PC Shareware 1.4 campaign. It targets PSP Go with homebrew support enabled. The EBOOT was tested in PPSSPP. This candidate corrects startup memory use and alignment faults in model and pilot loading. The previous build reached pilot selection but froze while loading the saved pilot on a physical PSP Go. Physical gameplay with this correction still needs confirmation. See [ARK-4’s homebrew documentation](https://github.com/PSP-Archive/ARK-4/wiki/Homebrew-Support/d97f824abbab504f6da37d591fd159fdcac4f1ba) for an example of how unsigned PSP homebrew is launched.
 
-1. Download [Descent-Go-0.1.0-rc.2-psp.zip](https://github.com/speccy88/descent-psp-go/releases/download/v0.1.0-rc.2/Descent-Go-0.1.0-rc.2-psp.zip) and extract it on your computer.
+1. Download [Descent-Go-0.1.0-rc.3-psp.zip](https://github.com/speccy88/descent-psp-go/releases/download/v0.1.0-rc.3/Descent-Go-0.1.0-rc.3-psp.zip) and extract it on your computer.
 2. Open a terminal in the extracted folder. With Python 3.11 or newer, run:
 
    ```powershell
@@ -29,8 +29,8 @@ The pinned host packages use Ubuntu 26.04 x86-64. These commands fetch the verif
 
 ## Verify and install from Windows
 
-For a staged copy with SHA-256 readback, first run the Python setup command above. From the extracted folder run `.\scripts\Install-DescentGo.ps1 -Mode Plan -Package .\Descent-Go -PspRoot 'X:\'`, replacing X with the PSP's drive letter. Check the device and target in the output. To install, run the same command with `-Mode Install`, pass the printed IDs as `-ExpectedVolumeId` and `-ExpectedDeviceId`, and add `-DestinationConfirmed`. The script requires `-Update` before replacing an existing installation. See [README.md](https://github.com/speccy88/descent-psp-go/blob/v0.1.0-rc.2/README.md) for build and installer details.
+For a staged copy with SHA-256 readback, first run the Python setup command above. From the extracted folder run `.\scripts\Install-DescentGo.ps1 -Mode Plan -Package .\Descent-Go -PspRoot 'X:\'`, replacing X with the PSP's drive letter. Check the device and target in the output. To install, run the same command with `-Mode Install`, pass the printed IDs as `-ExpectedVolumeId` and `-ExpectedDeviceId`, and add `-DestinationConfirmed`. The script requires `-Update` before replacing an existing installation. See [README.md](https://github.com/speccy88/descent-psp-go/blob/v0.1.0-rc.3/README.md) for build and installer details.
 
 ## Startup diagnosis
 
-If the red title screen freezes, use this rc.2 executable and retain the entire `logs` folder after returning to USB mode. `logs/boot.log` records each model read and whether game-data loading completed. Holding L while launching disables audio for diagnosis. See [the investigation and validation record](https://github.com/speccy88/descent-psp-go/blob/v0.1.0-rc.2/docs/startup-investigation.md).
+If an earlier build freezes at the title or pilot selection, use this rc.3 executable and retain the entire `logs` folder after returning to USB mode. `logs/boot.log` records each model read and whether game-data loading completed. Holding L while launching disables audio for diagnosis. See [the investigation and validation record](https://github.com/speccy88/descent-psp-go/blob/v0.1.0-rc.3/docs/startup-investigation.md).
