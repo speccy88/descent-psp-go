@@ -69,6 +69,7 @@ COPYRIGHT 1993-1998 PARALLAX SOFTWARE CORPORATION.  ALL RIGHTS RESERVED.
 #include "sounds.h"
 #include "args.h"
 #include "gameseq.h"
+#include "startup.h"
 #include "gamefont.h"
 #include "newmenu.h"
 #include "endlevel.h"
@@ -397,6 +398,7 @@ void editor_reset_stuff_on_level()
 	Control_center_destroyed = 0;
 	if (Newdemo_state != ND_STATE_PLAYBACK)
 		gameseq_remove_unused_players();
+	PSP_BOOT_CHECKPOINT("initializing cockpit and robots");
 	init_cockpit();
 	init_robots_for_level();
 	init_ai_objects();
@@ -602,6 +604,8 @@ void LoadLevel(int level_num,int page_in_textures)
 
 	level_name = get_level_file(level_num);
 
+	PSP_BOOT_CHECKPOINT("loading level geometry and objects");
+	PSP_BOOT_STAGE(level_name);
 	if (!load_level(level_name))
 		Current_level_num=level_num;
 
@@ -616,8 +620,10 @@ void LoadLevel(int level_num,int page_in_textures)
 	my_segments_checksum = netmisc_calc_checksum();
 #endif
 
+	PSP_BOOT_CHECKPOINT("loading endlevel data");
 	load_endlevel_data(level_num);
 	
+	PSP_BOOT_CHECKPOINT("loading custom level data");
 	load_custom_data(level_name);
 
 #ifdef NETWORK
@@ -626,14 +632,19 @@ void LoadLevel(int level_num,int page_in_textures)
 
 	Players[Player_num] = save_player;
 
+	PSP_BOOT_CHECKPOINT("setting level sound sources");
 	set_sound_sources();
 
+	PSP_BOOT_CHECKPOINT("starting level music");
 	songs_play_level_song( Current_level_num, 0 );
 
 	gr_palette_load(gr_palette);		//actually load the palette
 
-	if ( page_in_textures )
+	if ( page_in_textures ) {
+		PSP_BOOT_CHECKPOINT("paging level textures");
 		piggy_load_level_data();
+	}
+	PSP_BOOT_CHECKPOINT("level resources loaded");
 }
 
 //sets up Player_num & ConsoleObject
@@ -659,6 +670,7 @@ void InitPlayerObject()
 //starts a new game on the given level
 void StartNewGame(int start_level)
 {
+	PSP_BOOT_CHECKPOINT("initializing new player");
 	state_quick_item = -1;	// for first blind save, pick slot to save in
 
 	Game_mode = GM_NORMAL;
@@ -671,6 +683,7 @@ void StartNewGame(int start_level)
 
 	N_players = 1;
 
+	PSP_BOOT_CHECKPOINT("new player initialized");
 	StartNewLevel(start_level);
 
 	Players[Player_num].starting_level = start_level;		// Mark where they started
@@ -1087,6 +1100,7 @@ void StartNewLevelSub(int level_num, int page_in_textures, int secret_flag)
 
 	Assert(Current_level_num == level_num);	//make sure level set right
 
+	PSP_BOOT_CHECKPOINT("initializing level players");
 	gameseq_init_network_players(); // Initialize the Players array for
 											  // this level
 
@@ -1136,8 +1150,11 @@ void StartNewLevelSub(int level_num, int page_in_textures, int secret_flag)
 
 	Control_center_destroyed = 0;
 
+	PSP_BOOT_CHECKPOINT("initializing cockpit");
 	init_cockpit();
+	PSP_BOOT_CHECKPOINT("initializing level robots");
 	init_robots_for_level();
+	PSP_BOOT_CHECKPOINT("initializing level AI");
 	init_ai_objects();
 	init_morphs();
 	init_all_matcens();
@@ -1162,6 +1179,7 @@ void StartNewLevelSub(int level_num, int page_in_textures, int secret_flag)
 #endif
 		StartLevel(0);		// Note link to above if!
 
+	PSP_BOOT_CHECKPOINT("level started; initializing reactor");
 	copy_defaults_to_robot_all();
 	init_controlcen_for_level();
 
@@ -1172,6 +1190,7 @@ void StartNewLevelSub(int level_num, int page_in_textures, int secret_flag)
 	if (!((Game_mode & GM_MULTI) && (Newdemo_state != ND_STATE_PLAYBACK)))
 		palette_save();
 
+	PSP_BOOT_CHECKPOINT("entering gameplay");
 	if (!Game_wind)
 		game();
 }
@@ -1203,7 +1222,9 @@ void StartNewLevel(int level_num)
 	ThisLevelTime=0;
 
 	if (!(Game_mode & GM_MULTI)) {
+		PSP_BOOT_CHECKPOINT("opening briefing");
 		do_briefing_screens(Briefing_text_filename, level_num);
+		PSP_BOOT_CHECKPOINT("briefing finished");
 	}
 	StartNewLevelSub(level_num, 1, 0 );
 

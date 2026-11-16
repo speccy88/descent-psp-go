@@ -21,6 +21,7 @@ COPYRIGHT 1993-1998 PARALLAX SOFTWARE CORPORATION.  ALL RIGHTS RESERVED.
 #include <string.h>
 
 #include "menu.h"
+#include "startup.h"
 #include "inferno.h"
 #include "game.h"
 #include "gr.h"
@@ -536,6 +537,7 @@ int do_option ( int select)
 {
 	switch (select) {
 		case MENU_NEW_GAME:
+			PSP_BOOT_CHECKPOINT("new game selected");
 			select_mission(0, "New Game\n\nSelect mission", do_new_game_menu);
 			break;
 		case MENU_GAME:
@@ -768,6 +770,7 @@ int do_difficulty_menu()
 
 int do_new_game_menu()
 {
+	PSP_BOOT_CHECKPOINT("mission selected; preparing new game menu");
 	int new_level_num,player_highest_level;
 
 	new_level_num = 1;
@@ -814,9 +817,11 @@ int do_new_game_menu()
 
 	Difficulty_level = PlayerCfg.DefaultDifficulty;
 
+	PSP_BOOT_CHECKPOINT("opening difficulty selection");
 	if (!do_difficulty_menu())
 		return 0;
 
+	PSP_BOOT_CHECKPOINT("difficulty selected; starting new game");
 	StartNewGame(new_level_num);
 
 	return 1;	// exit mission listbox

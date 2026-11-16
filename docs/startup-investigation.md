@@ -96,3 +96,27 @@ Next physical check: pass the red title, confirm or create a pilot, start a new
 game, and enter level one. If it fails, collect the new boot/runtime/error logs
 before another update. Actual hardware gameplay, sustained performance,
 suspend/resume and HOME exit remain unverified.
+
+## Follow-up: New Game freeze
+
+The user subsequently confirmed that rc.2 reaches the main menu on the physical
+PSP Go. A new freeze occurs after New Game, around the briefing or level-loading
+screen. The collected log confirms `game data loaded`; runtime.log records the
+title music but no briefing-track start. A pilot and settings were successfully
+written. The log does not yet establish the failing operation.
+
+The ordinary host New Game flow was driven through the difficulty menu and
+briefing into level one under the alignment sanitizer, using a local copy of
+the PSP pilot. A captured framebuffer confirms gameplay; no alignment error
+was reported before the 22-second test watchdog stopped the process. Separately,
+60 title/briefing/level music changes with pause/resume and worker joins passed
+under ASan/UBSan using the PSP music implementation and SDL's dummy audio driver.
+Neither check reproduces the physical freeze.
+
+The follow-up diagnostic adds checkpoints around mission selection, player
+initialization, briefing text and pictures, mixer detachment, music worker joins,
+track startup, level resources and gameplay setup. Checkpoints record free heap,
+free kernel memory and remaining stack. Its transition log was exercised through
+level one in PPSSPP. It is diagnostic instrumentation, not a confirmed fix for
+this second failure. An audio-disabled physical test (hold L during launch) is
+requested to narrow the next investigation. No new gameplay claim is made.

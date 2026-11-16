@@ -52,6 +52,7 @@ COPYRIGHT 1993-1998 PARALLAX SOFTWARE CORPORATION.  ALL RIGHTS RESERVED.
 #include "mouse.h"
 #include "console.h"
 #include "args.h"
+#include "startup.h"
 
 #define MAX_BRIEFING_COLORS     7
 #define DEFAULT_BRIEFING_BKG		"brief03.pcx"
@@ -1124,14 +1125,17 @@ void do_briefing_screens(char *filename, int level_num)
 	if (!br)
 		return;
 
+	PSP_BOOT_CHECKPOINT("initializing briefing state");
 	briefing_init(br, level_num);
 
+	PSP_BOOT_CHECKPOINT("loading briefing text");
 	if (!load_screen_text(filename, &br->text))
 	{
 		d_free(br);
 		return;
 	}
 
+	PSP_BOOT_CHECKPOINT("creating briefing window");
 	wind = window_create(&grd_curscreen->sc_canvas, 0, 0, SWIDTH, SHEIGHT, (int (*)(window *, d_event *, void *))briefing_handler, br);
 	if (!wind)
 	{
@@ -1140,12 +1144,14 @@ void do_briefing_screens(char *filename, int level_num)
 		return;
 	}
 
+	PSP_BOOT_CHECKPOINT("starting briefing music");
 	if ((songs_is_playing() != SONG_BRIEFING) && (songs_is_playing() != SONG_ENDGAME))
 		songs_play_song( SONG_BRIEFING, 1 );
 
 	set_screen_mode( SCREEN_MENU );
 	gr_set_current_canvas(NULL);
 
+	PSP_BOOT_CHECKPOINT("loading first briefing picture");
 	if (!new_briefing_screen(br, 1))
 	{
 		window_close(wind);
@@ -1154,6 +1160,7 @@ void do_briefing_screens(char *filename, int level_num)
 
 	// Stay where we are in the stack frame until briefing done
 	// Too complicated otherwise
+	PSP_BOOT_CHECKPOINT("briefing ready");
 	while (window_exists(wind))
 		event_process();
 }

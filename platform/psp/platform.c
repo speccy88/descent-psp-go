@@ -36,6 +36,16 @@ void psp_boot_stage(const char *stage)
     }
 }
 
+void psp_boot_checkpoint(const char *stage)
+{
+    char line[224];
+    snprintf(line, sizeof(line), "%s [ms=%u heap_free=%d kernel_free=%u stack_free=%d]",
+             stage, (unsigned)(sceKernelGetSystemTimeLow() / 1000),
+             PSP_GAME_HEAP_KB * 1024 - mallinfo().uordblks,
+             sceKernelTotalFreeMemSize(), sceKernelCheckThreadStack());
+    psp_boot_stage(line);
+}
+
 extern void psp_input_init(void),psp_input_clear(void),psp_music_service(void),psp_music_stats(void);
 extern void psp_timer_reset(void);
 extern int32_t psp_input_probe[12];
